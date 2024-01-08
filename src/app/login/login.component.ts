@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,7 +10,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 export class LoginComponent implements OnInit {
   myForm!: FormGroup;
   hide = true;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private router: Router) { }
   ngOnInit() {
     this.myForm = this.fb.group({
       name: ['', Validators.required],
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
       console.log('Valid?', form.valid); // true or false
       console.log('Name', form.value.name);
       console.log('password', form.value.password);
+      this.router.navigateByUrl('/dashboard')
     }
 
     
