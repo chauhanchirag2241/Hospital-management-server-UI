@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       console.log('Valid?', form.valid); // true or false
       console.log('Name', form.value.name);
       console.log('password', form.value.password);
-      this.router.navigateByUrl('/dashboard')
+      location.pathname = ('/layout');
     }
 
     
