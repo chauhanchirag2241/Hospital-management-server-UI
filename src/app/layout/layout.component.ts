@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent implements OnInit {
   constructor(private router: Router) { }
-  ngOnInit() {
+  //ngOnInit() {
 
-  }
-    //ngOnInit(): void {
-    //  this.router.navigate(['/dashboard']);
-    //}
+  //}
+    ngOnInit(): void {
+      /*this.router.navigate(['/dashboard']);*/
+    }
 
 }
