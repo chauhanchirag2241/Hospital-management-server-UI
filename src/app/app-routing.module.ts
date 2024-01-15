@@ -1,34 +1,38 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginComponent } from './login/login.component';
-import { LayoutComponent } from './layout/layout.component';
-import { HeaderComponent } from './header/header.component';
+import { AdminComponent } from './Modules/admin/admin.component';
+import { AuthComponent } from './Modules/auth/auth.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    redirectTo: '/auth/login',
+    pathMatch: 'full'
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'layout', component: LayoutComponent, children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'header', component: HeaderComponent },
-      //{ path: ':id', component: MuscleEditComponent }
+    path: 'auth',
+    component: AuthComponent,
+    children: [
+      {
+        path: 'login',
+        loadChildren: () => import('./view/Auth/login/login.module').then(m => m.LoginModule)
+      },
+      {
+        path: 'register',
+        loadChildren: () => import('./view/Auth/register/register.module').then(m => m.RegisterModule)
+      }
     ]
   },
-  //{
-  //  path: 'dashboard',
-  //  component: DashboardComponent
-  //},
-  //{
-  //  path: 'header',
-  //  component: HeaderComponent
-  //},
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./view/Admin/dashboard/dashboard.module').then(m => m.DashboardModule)
+      }
+    ]
+  }
 ];
 
 @NgModule({
