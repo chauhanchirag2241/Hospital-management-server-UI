@@ -15,17 +15,20 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'layout',
-    component: LayoutComponent
+    path: 'layout', component: LayoutComponent, children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'header', component: HeaderComponent },
+      //{ path: ':id', component: MuscleEditComponent }
+    ]
   },
-  {
-    path: 'dashboard',
-    component: DashboardComponent
-  },
-  {
-    path: 'header',
-    component: HeaderComponent
-  },
+  //{
+  //  path: 'dashboard',
+  //  component: DashboardComponent
+  //},
+  //{
+  //  path: 'header',
+  //  component: HeaderComponent
+  //},
 ];
 
 @NgModule({
