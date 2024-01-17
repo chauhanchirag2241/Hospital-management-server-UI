@@ -30,6 +30,10 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./view/Admin/dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+       {
+         path: 'doctor',
+         loadChildren: () => import('./view/Admin/doctor/doctor.module').then(m => m.DoctorModule)
       }
     ]
   }

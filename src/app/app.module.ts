@@ -16,11 +16,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { AdminComponent } from './Modules/admin/admin.component';
 import { AuthComponent } from './Modules/auth/auth.component';
+import { MatTableModule } from '@angular/material/table';
+
+
+//import { MatTableDataSource } from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
-    AuthComponent,
+    AuthComponent, 
   ],
   imports: [
     BrowserModule,
@@ -34,10 +38,12 @@ import { AuthComponent } from './Modules/auth/auth.component';
     MatDividerModule,
     MatProgressBarModule,
     ReactiveFormsModule,
-    MatIconModule
-      
+    MatIconModule,
+    MatTableModule,
+    
+    //MatTableDataSource,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] 
 })
 export class AppModule { }

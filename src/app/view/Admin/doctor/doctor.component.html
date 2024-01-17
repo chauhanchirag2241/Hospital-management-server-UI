@@ -1,0 +1,72 @@
+<!--<h1>doctor works</h1>-->
+
+  <div class="info">
+    <div class="btn">
+      <div class="form-date">
+
+        <button mat-fab class="btn btn-primary" (click)="openDialog()">
+          New
+        </button>
+        <button mat-fab extended class="btn btn-danger">
+          Submited
+        </button>
+        <br>
+        <mat-form-field appearance="outline" style="margin-top:20px">
+          <mat-label>Search By Name</mat-label>
+          <input matInput placeholder="Search Here">
+          <mat-icon matSuffix>search</mat-icon>
+          <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<div class="dttablediv">
+  <div class="mat-elevation-z8 tablecen">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="doctorcode">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Doctor Code </th>
+        <td mat-cell *matCellDef="let element">  {{element.doctorcode}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="doctorname">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Doctor Name </th>
+        <td mat-cell *matCellDef="let element">  {{element.doctorname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="qualification">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Quelification </th>
+        <td mat-cell *matCellDef="let element">  {{element.qualification}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="jobspecification">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> JobSpecification </th>
+        <td mat-cell *matCellDef="let element">  {{element.jobspecification}} </td>
+      </ng-container>
+
+
+      Symbol Column
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Edit </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="material-icons" style="color:blueviolet; size: 15px;">mode_edit</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Delete </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="material-icons" style="color:red; size: 15px;">delete</span>
+        </td>
+      </ng-container>
+
+      (click)="onEdit(element.admissionid)"
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

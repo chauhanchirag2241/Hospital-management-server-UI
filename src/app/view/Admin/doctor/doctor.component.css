@@ -1,0 +1,48 @@
+/* table {
+  width: 80%;
+} */
+.dttablediv {
+  max-width: 1450px;
+  /* margin: 0 auto; */
+}
+
+.info {
+  width: 100%;
+  min-height: 150px;
+}
+
+  .info .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  /* .info .form-date{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  } */
+
+  .info .form-date .date {
+    color: white;
+  }
+
+  .info .form-date button {
+    border-radius: 5px;
+    padding: 7px 40px;
+  }
+
+.btn {
+  margin-left: 20px;
+  margin-top:10px;
+}
+
+.tablecen {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1500px;
+  height: 500px;
+  overflow-x: scroll;
+  overflow-y: scroll
+}
