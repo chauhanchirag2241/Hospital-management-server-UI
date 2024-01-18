@@ -19,6 +19,7 @@ import { NewdoctorComponent } from './newdoctor/newdoctor.component';
 export class DoctorComponent implements OnInit {
   
   ngOnInit() {
+
     this.dataSource = [
       {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
       {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
@@ -42,7 +43,8 @@ export class DoctorComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(NewdoctorComponent, {
-       height: '600px', width: '1500px', 
+      //backdropClass: 'dialogstyle'
+      // height: '600px', width: '1500px', 
       //data: [this.admissionById, this.isEditScreen],
       //  admissionData : this.admissionById,
     });

@@ -1,4 +1,180 @@
-<div class="button">
-  <button mat-fab class="btn btn-danger "  >Cancel</button>
-  <button mat-fab class="btn btn-success " style="margin-left:15px;" >Submit</button>
+<mat-card >
+  <mat-card-header class="bg-dark">
+    <mat-card-title class="text-white">Add New Employee</mat-card-title>
+    <!--<mat-card-subtitle>End</mat-card-subtitle>-->
+  </mat-card-header>
+  <mat-card-content>
+    <div class="popdiv">
+      <div class="row col-md-12">
+
+        <div class="col-md-4" >
+          <mat-form-field appearance="outline" class="fieldsize ">
+            <mat-label>Department</mat-label>
+            <mat-select >
+
+              <mat-option value="Male">Outpatient department</mat-option>
+              <mat-option value="Female">Surgical department</mat-option>
+              <mat-option value="Other">Inpatient service</mat-option>
+              <mat-option value="Other">Pharmacy department</mat-option>
+              <mat-option value="Other">adiology department (X-ray)</mat-option>
+
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" class="fieldsize">
+            <mat-label>Employee Type</mat-label>
+            <mat-select >
+
+              <mat-option value="Male">Doctor</mat-option>
+              <mat-option value="Female">Nurses</mat-option>
+              <mat-option value="Other">Medical Support Staff</mat-option>
+              <mat-option value="Other">Health Assistance</mat-option>
+              <mat-option value="Other">Other Staff</mat-option>
+
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" class="fieldsize">
+            <mat-label>Employee Code</mat-label>
+            <input matInput placeholder="1234">
+            <!--<mat-icon matSuffix>search</mat-icon>-->
+            <!--<mat-hint>Hint</mat-hint>-->
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" class="fieldsize">
+            <mat-label>Employee Name</mat-label>
+            <input matInput placeholder="ABC">
+            <!--<mat-icon matSuffix>search</mat-icon>-->
+            <!--<mat-hint>Hint</mat-hint>-->
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" class="fieldsize">
+            <mat-label>Select Gender</mat-label>
+            <mat-select>
+
+              <mat-option value="Male">Male</mat-option>
+              <mat-option value="Female">Female</mat-option>
+              <mat-option value="Other">Other</mat-option>
+
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" class="fieldsize">
+            <mat-label>Mobile Number</mat-label>
+            <input matInput placeholder="9999999999">
+            <!--<mat-icon matSuffix>search</mat-icon>-->
+            <!--<mat-hint>Hint</mat-hint>-->
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" class="fieldsize">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="ABC@gamil.com">
+            <!--<mat-icon matSuffix>search</mat-icon>-->
+            <!--<mat-hint>Hint</mat-hint>-->
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" class="fieldsize">
+            <mat-label>Qualification</mat-label>
+            <input matInput placeholder="MBBS">
+            <!--<mat-icon matSuffix>search</mat-icon>-->
+            <!--<mat-hint>Hint</mat-hint>-->
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline" class="fieldsize">
+            <mat-label>Job Specification</mat-label>
+            <input matInput placeholder="Job Specification">
+            <!--<mat-icon matSuffix>search</mat-icon>-->
+            <!--<mat-hint>Hint</mat-hint>-->
+          </mat-form-field>
+        </div>
+
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+  </mat-card-content>
+  <mat-card-actions align="end" class="bg-dark">
+    <!--<button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>-->
+    <button mat-fab class="btn btn-danger ">Cancel</button>
+    <button mat-fab class="btn btn-success " style="margin-left:15px;">Submit</button>
+  </mat-card-actions>
+</mat-card>
+
+<!--<div class="popdiv">
+  <div class="row col-md-12">
+    <div class="col-md-4">
+      <mat-form-field appearance="outline" class="fieldsize">
+        <mat-label>Doctor Code</mat-label>
+        <input matInput placeholder="1234">-->
+<!--<mat-icon matSuffix>search</mat-icon>-->
+<!--<mat-hint>Hint</mat-hint>-->
+<!--</mat-form-field>
 </div>
+<div class="col-md-4">
+  <mat-form-field appearance="outline" class="fieldsize">
+    <mat-label>Doctor Name</mat-label>
+    <input matInput placeholder="ABC">-->
+<!--<mat-icon matSuffix>search</mat-icon>-->
+<!--<mat-hint>Hint</mat-hint>-->
+<!--</mat-form-field>
+</div>
+<div class="col-md-4">
+  <mat-form-field appearance="outline" class="fieldsize">
+    <mat-label>Select Gender</mat-label>
+    <mat-select>
+
+      <mat-option value="Male">Male</mat-option>
+      <mat-option value="Female">Female</mat-option>
+      <mat-option value="Other">Other</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="col-md-4">
+  <mat-form-field appearance="outline" class="fieldsize">
+    <mat-label>Mobile Number</mat-label>
+    <input matInput placeholder="9999999999">-->
+<!--<mat-icon matSuffix>search</mat-icon>-->
+<!--<mat-hint>Hint</mat-hint>-->
+<!--</mat-form-field>
+</div>
+<div class="col-md-4">
+  <mat-form-field appearance="outline" class="fieldsize">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="ABC@gamil.com">-->
+<!--<mat-icon matSuffix>search</mat-icon>-->
+<!--<mat-hint>Hint</mat-hint>-->
+<!--</mat-form-field>
+</div>
+<div class="col-md-4">
+  <mat-form-field appearance="outline" class="fieldsize">
+    <mat-label>Qualification</mat-label>
+    <input matInput placeholder="MBBS">-->
+<!--<mat-icon matSuffix>search</mat-icon>-->
+<!--<mat-hint>Hint</mat-hint>-->
+<!--</mat-form-field>
+</div>
+<div class="col-md-4">
+  <mat-form-field appearance="outline" class="fieldsize">
+    <mat-label>Job Specification</mat-label>
+    <input matInput placeholder="Job Specification">-->
+<!--<mat-icon matSuffix>search</mat-icon>-->
+<!--<mat-hint>Hint</mat-hint>-->
+<!--</mat-form-field>
+    </div>
+
+  </div>
+</div>
+<div class="button">
+  <button mat-fab class="btn btn-danger ">Cancel</button>
+  <button mat-fab class="btn btn-success " style="margin-left:15px;">Submit</button>
+</div>-->
