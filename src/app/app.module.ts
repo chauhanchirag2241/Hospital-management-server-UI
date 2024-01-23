@@ -24,7 +24,7 @@ import { MatTableModule } from '@angular/material/table';
   declarations: [
     AppComponent,
     AdminComponent,
-    AuthComponent, 
+    AuthComponent,
   ],
   imports: [
     BrowserModule,

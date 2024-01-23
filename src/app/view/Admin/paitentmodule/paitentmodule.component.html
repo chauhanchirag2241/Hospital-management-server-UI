@@ -1,0 +1,238 @@
+<!--#region list view-->
+
+<div *ngIf="isShowList">
+  <div class="info">
+    <div class="btn">
+      <div class="form-date">
+
+        <button mat-fab class="btn btn-primary" (click)="onAddBtnClick()">
+          <!--(click)="openDialog()"-->
+          New
+        </button>
+        <button mat-fab extended class="btn btn-danger">
+          Submited
+        </button>
+        <br>
+        <mat-form-field appearance="outline" style="margin-top:20px">
+          <mat-label>Search By Name</mat-label>
+          <input matInput placeholder="Search Here">
+          <mat-icon matSuffix>search</mat-icon>
+          <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="dttablediv">
+    <div class="mat-elevation-z8 tablecen">
+      <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="paitentcode">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Paitent Code </th>
+          <td mat-cell *matCellDef="let element">  {{element.paitentcode}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="paitentname">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Paitent Name </th>
+          <td mat-cell *matCellDef="let element">  {{element.paitentname}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="gender">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Gender </th>
+          <td mat-cell *matCellDef="let element">  {{element.gender}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="mobileno">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Mobile No </th>
+          <td mat-cell *matCellDef="let element">  {{element.mobileno}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Email </th>
+          <td mat-cell *matCellDef="let element">  {{element.email}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Address </th>
+          <td mat-cell *matCellDef="let element">  {{element.address}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="disease">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Disease </th>
+          <td mat-cell *matCellDef="let element">  {{element.disease}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="bloodgroup">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Blood Group </th>
+          <td mat-cell *matCellDef="let element">  {{element.bloodgroup}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="doctorid">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Doctor </th>
+          <td mat-cell *matCellDef="let element">  {{element.doctorid}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Description </th>
+          <td mat-cell *matCellDef="let element">  {{element.description}} </td>
+        </ng-container>
+
+
+
+        <!--Symbol Column-->
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Edit </th>
+          <td mat-cell *matCellDef="let element">
+            <span class="material-icons" style="color:blueviolet; size: 15px;">mode_edit</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Delete </th>
+          <td mat-cell *matCellDef="let element">
+            <span class="material-icons" style="color:red; size: 15px;">delete</span>
+          </td>
+        </ng-container>
+
+        <!--(click)="onEdit(element.admissionid)"-->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+</div>
+<!--#endregion end listview-->
+
+
+<!--#region Add View-->
+<div *ngIf="isAdd">
+  <mat-card>
+    <mat-card-header class="bg-dark headermargin">
+      <mat-card-title class="text-white">Add New Employee</mat-card-title>
+      <button class="btn btn-primary backbtn" (click)="onBackBtnClick()">Back To List</button>
+      <!--<mat-card-subtitle>End</mat-card-subtitle>-->
+    </mat-card-header>
+    <mat-card-content>
+      <div class="popdiv">
+        <div class="row col-md-12">
+
+          <div class="col-md-4">
+            <mat-form-field appearance="outline" class="fieldsize">
+              <mat-label>Paitent Code</mat-label>
+              <input matInput placeholder="1234">
+              <!--<mat-icon matSuffix>search</mat-icon>-->
+              <!--<mat-hint>Hint</mat-hint>-->
+
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="outline" class="fieldsize">
+              <mat-label>Paitent Name</mat-label>
+              <input matInput placeholder="ABC">
+              <!--<mat-icon matSuffix>search</mat-icon>-->
+              <!--<mat-hint>Hint</mat-hint>-->
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="outline" class="fieldsize">
+              <mat-label>Select Gender</mat-label>
+              <mat-select>
+
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+                <mat-option value="Other">Other</mat-option>
+
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-4">
+            <mat-form-field appearance="outline" class="fieldsize">
+              <mat-label>Mobile Number</mat-label>
+              <input matInput placeholder="9999999999">
+              <!--<mat-icon matSuffix>search</mat-icon>-->
+              <!--<mat-hint>Hint</mat-hint>-->
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="outline" class="fieldsize">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="ABC@gamil.com">
+              <!--<mat-icon matSuffix>search</mat-icon>-->
+              <!--<mat-hint>Hint</mat-hint>-->
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="outline" class="fieldsize">
+              <mat-label>Address</mat-label>
+              <input matInput placeholder="Address">
+              <!--<mat-icon matSuffix>search</mat-icon>-->
+              <!--<mat-hint>Hint</mat-hint>-->
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="outline" class="fieldsize">
+              <mat-label>Disease</mat-label>
+              <input matInput placeholder="Disease">
+              <!--<mat-icon matSuffix>search</mat-icon>-->
+              <!--<mat-hint>Hint</mat-hint>-->
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="outline" class="fieldsize">
+              <mat-label>Select Blood Group</mat-label>
+              <mat-select>
+
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+                <mat-option value="Other">Other</mat-option>
+
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="outline" class="fieldsize">
+              <mat-label>Select Doctor</mat-label>
+              <mat-select>
+
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+                <mat-option value="Other">Other</mat-option>
+
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="outline" class="fieldsize">
+              <mat-label>Discription</mat-label>
+              <input matInput placeholder="Discription">
+              <!--<mat-icon matSuffix>search</mat-icon>-->
+              <!--<mat-hint>Hint</mat-hint>-->
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-4">
+            <mat-form-field appearance="outline" class="fieldsize">
+              <mat-label>Select Medicine</mat-label>
+              <mat-select [formControl]="medicines" multiple>
+                <mat-option *ngFor="let medicine of medicineList" [value]="medicine">{{medicine}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions align="end" class="bg-dark">
+      <!--<button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>-->
+      <button mat-fab class="btn btn-danger " (click)="onBackBtnClick()">Cancel</button>
+      <button mat-fab class="btn btn-success " style="margin-left:15px;">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<!--#endregion end of Add view-->

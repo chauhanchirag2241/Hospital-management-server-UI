@@ -34,7 +34,16 @@ const routes: Routes = [
        {
          path: 'doctor',
          loadChildren: () => import('./view/Admin/doctor/doctor.module').then(m => m.DoctorModule)
-      }
+      },
+      {
+        path: 'paitent',
+        loadChildren: () => import('./view/Admin/paitentmodule/paitentmodule.module').then(m => m.PaitentmoduleModule)
+      },
+      {
+        path: 'payment',
+        loadChildren: () => import('./view/Admin/payment/payment.module').then(m => m.PaymentModule)
+      },
+
     ]
   }
 ];
