@@ -88,13 +88,13 @@
             <div class="col-md-4">
               <mat-form-field appearance="outline" class="fieldsize ">
                 <mat-label>Department</mat-label>
-                <mat-select formControlName="department" required>
+                <mat-select formControlName="departmentid" required>
 
-                  <mat-option value="Male">Outpatient department</mat-option>
-                  <mat-option value="Female">Surgical department</mat-option>
-                  <mat-option value="Other">Inpatient service</mat-option>
-                  <mat-option value="Other">Pharmacy department</mat-option>
-                  <mat-option value="Other">adiology department (X-ray)</mat-option>
+                  <mat-option value="1">Outpatient department</mat-option>
+                  <mat-option value="2">Surgical department</mat-option>
+                  <mat-option value="3">Inpatient service</mat-option>
+                  <mat-option value="4">Pharmacy department</mat-option>
+                  <mat-option value="5">adiology department (X-ray)</mat-option>
 
                 </mat-select>
                 <mat-error *ngIf="employeeForm.invalid">Department Is Required</mat-error>
@@ -103,13 +103,13 @@
             <div class="col-md-4">
               <mat-form-field appearance="outline" class="fieldsize" required>
                 <mat-label>Employee Type</mat-label>
-                <mat-select formControlName="emptype">
+                <mat-select formControlName="employeetype">
 
-                  <mat-option value="Male">Doctor</mat-option>
-                  <mat-option value="Female">Nurses</mat-option>
-                  <mat-option value="Other">Medical Support Staff</mat-option>
-                  <mat-option value="Other">Health Assistance</mat-option>
-                  <mat-option value="Other">Other Staff</mat-option>
+                  <mat-option value="1">Doctor</mat-option>
+                  <mat-option value="2">Nurses</mat-option>
+                  <mat-option value="3">Medical Support Staff</mat-option>
+                  <mat-option value="4">Health Assistance</mat-option>
+                  <mat-option value="5">Other Staff</mat-option>
 
                 </mat-select>
                 <mat-error *ngIf="employeeForm.invalid">Employee Type Is Required</mat-error>
@@ -118,7 +118,7 @@
             <div class="col-md-4">
               <mat-form-field appearance="outline" class="fieldsize required">
                 <mat-label>Employee Code</mat-label>
-                <input matInput placeholder="1234" formControlName="empcode">
+                <input matInput placeholder="1234" formControlName="employeecode">
                 <!--<mat-icon matSuffix>search</mat-icon>-->
                 <!--<mat-hint>Hint</mat-hint>-->
                 <mat-error *ngIf="employeeForm.invalid">Employee Code Length Must Be 4 Degite</mat-error>
@@ -127,7 +127,7 @@
             <div class="col-md-4">
               <mat-form-field appearance="outline" class="fieldsize" required>
                 <mat-label>Employee Name</mat-label>
-                <input matInput placeholder="ABC" formControlName="empname">
+                <input matInput placeholder="ABC" formControlName="employeename">
                 <!--<mat-icon matSuffix>search</mat-icon>-->
                 <!--<mat-hint>Hint</mat-hint>-->
                 <mat-error *ngIf="employeeForm.invalid">Employee Name Is Required</mat-error>
@@ -138,9 +138,9 @@
                 <mat-label>Select Gender</mat-label>
                 <mat-select formControlName="gender">
 
-                  <mat-option value="Male">Male</mat-option>
-                  <mat-option value="Female">Female</mat-option>
-                  <mat-option value="Other">Other</mat-option>
+                  <mat-option value="1">Male</mat-option>
+                  <mat-option value="2">Female</mat-option>
+                  <mat-option value="3">Other</mat-option>
 
                 </mat-select>
                 <mat-error *ngIf="employeeForm.invalid">Please Select Gender</mat-error>
