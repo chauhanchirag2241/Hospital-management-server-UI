@@ -1,15 +1,7 @@
-import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTableModule } from '@angular/material/table';
+import { FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-paitentmodule',
@@ -21,34 +13,20 @@ export class PaitentmoduleComponent implements OnInit {
   /* variables*/
   isShowList: boolean = true;
   isAdd: boolean = false;
+  takePaitent: boolean = false;
   /*end variable*/
 
 
   ngOnInit() {
-
-    this.dataSource = [
-      { paitentcode: '2241', paitentname: 'chirag', gender: 'MBBS', mobileno: 'ABC',email:'AMC@gmail.com', address: 'ABCXYZ', disease: 'Feaver', bloodgroup: 'O-', doctorid: '1', description: 'medicine' },
-      { paitentcode: '2241', paitentname: 'chirag', gender: 'MBBS', mobileno: 'ABC',email:'AMC@gmail.com', address: 'ABCXYZ', disease: 'Feaver', bloodgroup: 'O-', doctorid: '1', description: 'medicine' },
-      { paitentcode: '2241', paitentname: 'chirag', gender: 'MBBS', mobileno: 'ABC',email:'AMC@gmail.com', address: 'ABCXYZ', disease: 'Feaver', bloodgroup: 'O-', doctorid: '1', description: 'medicine' },
-      { paitentcode: '2241', paitentname: 'chirag', gender: 'MBBS', mobileno: 'ABC',email:'AMC@gmail.com', address: 'ABCXYZ', disease: 'Feaver', bloodgroup: 'O-', doctorid: '1', description: 'medicine' },
-      { paitentcode: '2241', paitentname: 'chirag', gender: 'MBBS', mobileno: 'ABC',email:'AMC@gmail.com', address: 'ABCXYZ', disease: 'Feaver', bloodgroup: 'O-', doctorid: '1', description: 'medicine' },
-      { paitentcode: '2241', paitentname: 'chirag', gender: 'MBBS', mobileno: 'ABC',email:'AMC@gmail.com', address: 'ABCXYZ', disease: 'Feaver', bloodgroup: 'O-', doctorid: '1', description: 'medicine' },
-      { paitentcode: '2241', paitentname: 'chirag', gender: 'MBBS', mobileno: 'ABC',email:'AMC@gmail.com', address: 'ABCXYZ', disease: 'Feaver', bloodgroup: 'O-', doctorid: '1', description: 'medicine' },
-      { paitentcode: '2241', paitentname: 'chirag', gender: 'MBBS', mobileno: 'ABC',email:'AMC@gmail.com', address: 'ABCXYZ', disease: 'Feaver', bloodgroup: 'O-', doctorid: '1', description: 'medicine' },
-      { paitentcode: '2241', paitentname: 'chirag', gender: 'MBBS', mobileno: 'ABC',email:'AMC@gmail.com', address: 'ABCXYZ', disease: 'Feaver', bloodgroup: 'O-', doctorid: '1', description: 'medicine' },
-      { paitentcode: '2241', paitentname: 'chirag', gender: 'MBBS', mobileno: 'ABC',email:'AMC@gmail.com', address: 'ABCXYZ', disease: 'Feaver', bloodgroup: 'O-', doctorid: '1', description: 'medicine' },
-      { paitentcode: '2241', paitentname: 'chirag', gender: 'MBBS', mobileno: 'ABC',email:'AMC@gmail.com', address: 'ABCXYZ', disease: 'Feaver', bloodgroup: 'O-', doctorid: '1', description: 'medicine' },
-      { paitentcode: '2241', paitentname: 'chirag', gender: 'MBBS', mobileno: 'ABC',email:'AMC@gmail.com', address: 'ABCXYZ', disease: 'Feaver', bloodgroup: 'O-', doctorid: '1', description: 'medicine' },
-
-    ]
+    this.getAllPaitent();
   }
 
 
-  displayedColumns: string[] = ['paitentcode', 'paitentname', 'gender', 'mobileno', 'email','address', 'disease', 'bloodgroup', 'doctorid','description','edit','delete'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'mobileNo', 'emergencyContectNo', 'birthDate', 'email', 'gender', 'address', 'bloodGroup', 'medicalIssue', 'doctorId', 'visiteDate','timeingShift','edit','delete'];
   dataSource: any;
   medicines = new FormControl('');
   medicineList: string[] = ['Adrenaline', 'Dopamine', 'paracetamol', 'Dupixent', 'Plan B', 'Lexapro', 'Nurtec', 'Entresto', 'Meloxicam','Naproxen'];
- /* constructor(public dialog: MatDialog) { }*/
+  constructor( private http: HttpClient) { }
 
   //openDialog() {
   //  const dialogRef = this.dialog.open(NewdoctorComponent, {
@@ -72,5 +50,15 @@ export class PaitentmoduleComponent implements OnInit {
   onBackBtnClick() {
     this.isShowList = true;
     this.isAdd = false;
+  }
+
+  onEdit(id: any) {
+    this.takePaitent = true;
+    this.isShowList = false;
+  }
+  getAllPaitent() {
+    this.http.get<any>("https://localhost:7087/api/Paitent/GetAll").subscribe((res) => {
+      this.dataSource = res;
+    })
   }
 }

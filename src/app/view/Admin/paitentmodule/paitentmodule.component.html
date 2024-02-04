@@ -28,35 +28,35 @@
     <div class="mat-elevation-z8 tablecen">
       <table mat-table [dataSource]="dataSource">
 
-        <ng-container matColumnDef="paitentcode">
-          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Paitent Code </th>
-          <td mat-cell *matCellDef="let element">  {{element.paitentcode}} </td>
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">First Name</th>
+          <td mat-cell *matCellDef="let element">  {{element.firstName}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="paitentname">
-          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Paitent Name </th>
-          <td mat-cell *matCellDef="let element">  {{element.paitentname}} </td>
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Last Name </th>
+          <td mat-cell *matCellDef="let element">  {{element.lastName}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="gender">
-          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Gender </th>
-          <td mat-cell *matCellDef="let element">  {{element.gender}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="mobileno">
+        <ng-container matColumnDef="mobileNo">
           <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Mobile No </th>
-          <td mat-cell *matCellDef="let element">  {{element.mobileno}} </td>
+          <td mat-cell *matCellDef="let element">  {{element.mobileNo}} </td>
         </ng-container>
+
+        <ng-container matColumnDef="emergencyContectNo">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Emergency Mobile No </th>
+          <td mat-cell *matCellDef="let element">  {{element.emergencyContectNo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="birthDate">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Birth Date </th>
+          <td mat-cell *matCellDef="let element">  {{element.birthDate}} </td>
+        </ng-container>
+
 
         <ng-container matColumnDef="email">
           <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Email </th>
           <td mat-cell *matCellDef="let element">  {{element.email}} </td>
-        </ng-container>
-
-
-        <ng-container matColumnDef="address">
-          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Address </th>
-          <td mat-cell *matCellDef="let element">  {{element.address}} </td>
         </ng-container>
 
         <ng-container matColumnDef="disease">
@@ -64,28 +64,48 @@
           <td mat-cell *matCellDef="let element">  {{element.disease}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="bloodgroup">
+        <ng-container matColumnDef="gender">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">  Gender </th>
+          <td mat-cell *matCellDef="let element">  {{element.gender}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Address </th>
+          <td mat-cell *matCellDef="let element">  {{element.address}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="bloodGroup">
           <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Blood Group </th>
-          <td mat-cell *matCellDef="let element">  {{element.bloodgroup}} </td>
+          <td mat-cell *matCellDef="let element">  {{element.bloodGroup}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="doctorid">
-          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Doctor </th>
-          <td mat-cell *matCellDef="let element">  {{element.doctorid}} </td>
+        <ng-container matColumnDef="medicalIssue">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Medical Issue </th>
+          <td mat-cell *matCellDef="let element">  {{element.medicalIssue}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Description </th>
-          <td mat-cell *matCellDef="let element">  {{element.description}} </td>
+        <ng-container matColumnDef="doctorId">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">  Doctor Name </th>
+          <td mat-cell *matCellDef="let element">  {{element.doctorId}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="visiteDate">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">  Visite Date </th>
+          <td mat-cell *matCellDef="let element">  {{element.visiteDate}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="timeingShift">
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Timeing Shift  </th>
+          <td mat-cell *matCellDef="let element">  {{element.timeingShift}} </td>
+        </ng-container>
 
 
         <!--Symbol Column-->
         <ng-container matColumnDef="edit">
-          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Edit </th>
+          <th mat-header-cell *matHeaderCellDef class="text-white bg-dark" > Edit </th>
           <td mat-cell *matCellDef="let element">
-            <span class="material-icons" style="color:blueviolet; size: 15px;">mode_edit</span>
+            <span class="material-icons"  role="button" style="color:blueviolet; size: 15px;" (click)="onEdit(element.paitentId)">mode_edit</span>
           </td>
         </ng-container>
 
@@ -107,26 +127,16 @@
 
 
 <!--#region Add View-->
-<div *ngIf="isAdd">
+<div *ngIf="takePaitent">
   <mat-card>
     <mat-card-header class="bg-dark headermargin">
-      <mat-card-title class="text-white">Add New Employee</mat-card-title>
+      <mat-card-title class="text-white">Paitent Details</mat-card-title>
       <button class="btn btn-primary backbtn" (click)="onBackBtnClick()">Back To List</button>
       <!--<mat-card-subtitle>End</mat-card-subtitle>-->
     </mat-card-header>
     <mat-card-content>
       <div class="popdiv">
         <div class="row col-md-12">
-
-          <div class="col-md-4">
-            <mat-form-field appearance="outline" class="fieldsize">
-              <mat-label>Paitent Code</mat-label>
-              <input matInput placeholder="1234">
-              <!--<mat-icon matSuffix>search</mat-icon>-->
-              <!--<mat-hint>Hint</mat-hint>-->
-
-            </mat-form-field>
-          </div>
           <div class="col-md-4">
             <mat-form-field appearance="outline" class="fieldsize">
               <mat-label>Paitent Name</mat-label>
@@ -135,43 +145,7 @@
               <!--<mat-hint>Hint</mat-hint>-->
             </mat-form-field>
           </div>
-          <div class="col-md-4">
-            <mat-form-field appearance="outline" class="fieldsize">
-              <mat-label>Select Gender</mat-label>
-              <mat-select>
-
-                <mat-option value="Male">Male</mat-option>
-                <mat-option value="Female">Female</mat-option>
-                <mat-option value="Other">Other</mat-option>
-
-              </mat-select>
-            </mat-form-field>
-          </div>
-
-          <div class="col-md-4">
-            <mat-form-field appearance="outline" class="fieldsize">
-              <mat-label>Mobile Number</mat-label>
-              <input matInput placeholder="9999999999">
-              <!--<mat-icon matSuffix>search</mat-icon>-->
-              <!--<mat-hint>Hint</mat-hint>-->
-            </mat-form-field>
-          </div>
-          <div class="col-md-4">
-            <mat-form-field appearance="outline" class="fieldsize">
-              <mat-label>Email</mat-label>
-              <input matInput placeholder="ABC@gamil.com">
-              <!--<mat-icon matSuffix>search</mat-icon>-->
-              <!--<mat-hint>Hint</mat-hint>-->
-            </mat-form-field>
-          </div>
-          <div class="col-md-4">
-            <mat-form-field appearance="outline" class="fieldsize">
-              <mat-label>Address</mat-label>
-              <input matInput placeholder="Address">
-              <!--<mat-icon matSuffix>search</mat-icon>-->
-              <!--<mat-hint>Hint</mat-hint>-->
-            </mat-form-field>
-          </div>
+        
           <div class="col-md-4">
             <mat-form-field appearance="outline" class="fieldsize">
               <mat-label>Disease</mat-label>
@@ -180,32 +154,9 @@
               <!--<mat-hint>Hint</mat-hint>-->
             </mat-form-field>
           </div>
-          <div class="col-md-4">
-            <mat-form-field appearance="outline" class="fieldsize">
-              <mat-label>Select Blood Group</mat-label>
-              <mat-select>
-
-                <mat-option value="Male">Male</mat-option>
-                <mat-option value="Female">Female</mat-option>
-                <mat-option value="Other">Other</mat-option>
-
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="col-md-4">
-            <mat-form-field appearance="outline" class="fieldsize">
-              <mat-label>Select Doctor</mat-label>
-              <mat-select>
-
-                <mat-option value="Male">Male</mat-option>
-                <mat-option value="Female">Female</mat-option>
-                <mat-option value="Other">Other</mat-option>
-
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="col-md-4">
-            <mat-form-field appearance="outline" class="fieldsize">
+       
+          <div class="col-12 mt-3">
+            <mat-form-field appearance="outline" class="col-12" style="height:200px">
               <mat-label>Discription</mat-label>
               <input matInput placeholder="Discription">
               <!--<mat-icon matSuffix>search</mat-icon>-->
@@ -213,11 +164,11 @@
             </mat-form-field>
           </div>
 
-          <div class="col-md-4">
-            <mat-form-field appearance="outline" class="fieldsize">
+          <div class="col-12 mt-3">
+            <mat-form-field appearance="outline" class="fieldsize" class="col-12">
               <mat-label>Select Medicine</mat-label>
-              <mat-select [formControl]="medicines" multiple>
-                <mat-option *ngFor="let medicine of medicineList" [value]="medicine">{{medicine}}</mat-option>
+              <mat-select [formControl]="medicines" multiple >
+                <mat-option *ngFor="let medicine of medicineList" [value]="medicine" >{{medicine}}</mat-option>
               </mat-select>
             </mat-form-field>
 
