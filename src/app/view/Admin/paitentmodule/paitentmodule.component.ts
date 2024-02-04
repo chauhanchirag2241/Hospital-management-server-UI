@@ -13,10 +13,9 @@ import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-paitentmodule',
-  standalone: true,
   templateUrl: './paitentmodule.component.html',
   styleUrls: ['./paitentmodule.component.css'],
-  imports: [CommonModule, MatDialogModule, MatFormFieldModule, ReactiveFormsModule, MatTableModule, MatIconModule, MatInputModule, FormsModule, MatDividerModule, MatCardModule, MatSelectModule]
+  
 })
 export class PaitentmoduleComponent implements OnInit {
   /* variables*/

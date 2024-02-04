@@ -12,16 +12,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserModule } from '@angular/platform-browser';
-import { NewdoctorComponent } from './newdoctor/newdoctor.component';
-
+import { ToastPackage, ToastrModule, ToastrService,  } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-doctor',
-  standalone: true,
+
   templateUrl: './doctor.component.html',
   styleUrls: ['./doctor.component.css'],
-  imports: [CommonModule, HttpClientModule, MatDialogModule, MatFormFieldModule, MatTableModule, MatIconModule, MatFormFieldModule, MatInputModule, FormsModule, MatCardModule, MatSelectModule, MatDividerModule, ReactiveFormsModule],
-  providers: [ HttpClient]
+  
 })
 export class DoctorComponent implements OnInit {
   /* variables*/
@@ -31,27 +30,27 @@ export class DoctorComponent implements OnInit {
   /*end variable*/
 
   ngOnInit() {
+    this.getAllEmployee();
+    //this.dataSource = [
+    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
+    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
+    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
+    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
+    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
+    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
+    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
+    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
+    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
+    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
+    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
+    //  { doctorcod: '2241', doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
 
-    this.dataSource = [
-      {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-      {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-      {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-      {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-      {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-      {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-      {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-      {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-      {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-      {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-      {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-      { doctorcod: '2241', doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-
-    ]
+    //]
   }
-  displayedColumns: string[] = ['doctorcode','doctorname', 'qualification', 'jobspecification','edit','delete'];
+  displayedColumns: string[] = ['employeeCode', 'employeeName', 'gender', 'mobileNo', 'email', 'qualification','jobSpecification','edit','delete'];
   dataSource: any;
 
-  constructor( public formBuilder: FormBuilder, private http: HttpClient) { }
+  constructor(public formBuilder: FormBuilder, private http: HttpClient) { }
   //, private toasrt: ToastrService
   //openDialog() {
   //  const dialogRef = this.dialog.open(NewdoctorComponent, {
@@ -85,14 +84,21 @@ export class DoctorComponent implements OnInit {
     this.http.post<any>("https://localhost:7087/api/Employee/Add", this.employeeForm.value)
       .subscribe((res) => {
         this.response = res;
-        if (this.response.statusCode == 200) {
+        this.getAllEmployee();
+       // if (this.response.statusCode == 200) {
           //this.toasrt.success("Employee Created. 😎")
           //this.router.navigate(['employee']);
-        }
-        else {
+      //  }
+       // else {
          // this.toasrt.error("Error While Creating Employee. 😒😰")
-        }
+       // }
       });
+  }
+
+  getAllEmployee() {
+    this.http.get<any>("https://localhost:7087/api/Employee/GetAllEmployee").subscribe((res) => {
+      this.dataSource = res;
+    })
   }
   onAddBtnClick() {
     this.isShowList = false;

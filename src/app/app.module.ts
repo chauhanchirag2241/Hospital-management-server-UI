@@ -8,30 +8,41 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule } from '@angular/forms';
 
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { AdminComponent } from './Modules/admin/admin.component';
-import { AuthComponent } from './Modules/auth/auth.component';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatSelectModule } from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
+import { MatRadioModule } from '@angular/material/radio';
+import { DoctorComponent } from './view/Admin/doctor/doctor.component';
+import { PaitentmoduleComponent } from './view/Admin/paitentmodule/paitentmodule.component';
+import { PaymentComponent } from './view/Admin/payment/payment.component';
+import { MedicineComponent } from './view/Admin/medicine/medicine.component';
+import { LoginComponent } from './view/Auth/login/login.component';
+import { RegisterComponent } from './view/Auth/register/register.component';
+import { NavbarComponent } from './view/Admin/navbar/navbar.component';
 
 //import { MatTableDataSource } from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
-    AdminComponent,
-    AuthComponent,
+    DoctorComponent,
+    PaitentmoduleComponent,
+    PaymentComponent,
+    MedicineComponent,
+    LoginComponent,
+    RegisterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
@@ -40,7 +51,9 @@ import { MatTableModule } from '@angular/material/table';
     ReactiveFormsModule,
     MatIconModule,
     MatTableModule,
-    
+    MatSelectModule,
+    HttpClientModule,
+    MatRadioModule,
     //MatTableDataSource,
   ],
   providers: [],

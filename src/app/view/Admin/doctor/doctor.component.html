@@ -29,24 +29,36 @@
   <div class="mat-elevation-z8 tablecen">
     <table mat-table [dataSource]="dataSource">
 
-      <ng-container matColumnDef="doctorcode">
-        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Doctor Code </th>
-        <td mat-cell *matCellDef="let element">  {{element.doctorcode}} </td>
+      <ng-container matColumnDef="employeeCode">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Employee Code </th>
+        <td mat-cell *matCellDef="let element">  {{element.employeeCode}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="doctorname">
-        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Doctor Name </th>
-        <td mat-cell *matCellDef="let element">  {{element.doctorname}} </td>
+      <ng-container matColumnDef="employeeName">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Employee Name </th>
+        <td mat-cell *matCellDef="let element">  {{element.employeeName}} </td>
       </ng-container>
 
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Gender </th>
+        <td mat-cell *matCellDef="let element">  {{element.gender}} </td>
+      </ng-container>
+      <ng-container matColumnDef="mobileNo">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Mobile No</th>
+        <td mat-cell *matCellDef="let element">  {{element.mobileNo}} </td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Email</th>
+        <td mat-cell *matCellDef="let element">  {{element.email}} </td>
+      </ng-container>
       <ng-container matColumnDef="qualification">
         <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Quelification </th>
         <td mat-cell *matCellDef="let element">  {{element.qualification}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="jobspecification">
-        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> JobSpecification </th>
-        <td mat-cell *matCellDef="let element">  {{element.jobspecification}} </td>
+      <ng-container matColumnDef="jobSpecification">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> jobSpecification </th>
+        <td mat-cell *matCellDef="let element">  {{element.jobSpecification}} </td>
       </ng-container>
 
 

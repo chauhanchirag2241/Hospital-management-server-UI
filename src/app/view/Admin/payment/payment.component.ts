@@ -5,11 +5,11 @@ import { MatTableModule } from '@angular/material/table';
 declare var Razorpay: any;
 
 @Component({
-  standalone:true,
+  
   selector: 'app-payment',
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css'],
-  imports: [CommonModule, MatTableModule, MatInputModule]
+
   
 })
 export class PaymentComponent implements OnInit {
