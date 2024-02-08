@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -14,11 +14,16 @@ export class PaitentmoduleComponent implements OnInit {
   isShowList: boolean = true;
   isAdd: boolean = false;
   takePaitent: boolean = false;
+  paitentForm!: FormGroup;
+  res: any;
+  doctorList: any;
   /*end variable*/
 
 
   ngOnInit() {
     this.getAllPaitent();
+    this.createForm();
+    this.getDoctor();
   }
 
 
@@ -26,7 +31,19 @@ export class PaitentmoduleComponent implements OnInit {
   dataSource: any;
   medicines = new FormControl('');
   medicineList: string[] = ['Adrenaline', 'Dopamine', 'paracetamol', 'Dupixent', 'Plan B', 'Lexapro', 'Nurtec', 'Entresto', 'Meloxicam','Naproxen'];
-  constructor( private http: HttpClient) { }
+  constructor(public formBuilder: FormBuilder, private http: HttpClient) { }
+
+  createForm() {
+    this.paitentForm = this.formBuilder.group({
+      paitentId: [''],
+      paitentName: ['', [Validators.required]],
+      disease: ['', [Validators.required]],
+      assignId: ['', [Validators.required]],
+      description: [''],
+      medicinecon:[''],
+
+    });
+  }
 
   //openDialog() {
   //  const dialogRef = this.dialog.open(NewdoctorComponent, {
@@ -51,10 +68,21 @@ export class PaitentmoduleComponent implements OnInit {
     this.isShowList = true;
     this.isAdd = false;
   }
+  getDoctor() {
+    this.http.get<any>("https://localhost:7087/api/employee/GetDoctor").subscribe((response) => {
+      this.doctorList = response;
+    })
+  }
 
-  onEdit(id: any) {
+  onEdit(element: any) {
+    
     this.takePaitent = true;
     this.isShowList = false;
+    this.res = element;
+    this.paitentForm.patchValue({
+      paitentName: this.res.firstName + " " + this.res.lastName,
+      paitentId: this.res.paitentId,
+    });
   }
   getAllPaitent() {
     this.http.get<any>("https://localhost:7087/api/Paitent/GetAll").subscribe((res) => {
