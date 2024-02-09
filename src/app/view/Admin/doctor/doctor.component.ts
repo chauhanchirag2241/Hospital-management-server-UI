@@ -15,9 +15,11 @@ export class DoctorComponent implements OnInit {
   isShowList: boolean = true;
   isAdd: boolean = false;
   response: any;
+  departmentList: any;
   /*end variable*/
 
   ngOnInit() {
+    this.getDepartment();
     this.getAllEmployee();
     //this.dataSource = [
     //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
@@ -53,6 +55,11 @@ export class DoctorComponent implements OnInit {
   //  });
   //}
 
+  getDepartment() {
+    this.http.get<any>("https://localhost:7087/api/Department/GetAllDepartment").subscribe((response) => {
+      this.departmentList = response;
+    })
+  }
 
   employeeForm = this.formBuilder.group({
     employeeid:[0],

@@ -17,6 +17,7 @@ export class PaitentmoduleComponent implements OnInit {
   paitentForm!: FormGroup;
   res: any;
   doctorList: any;
+  departmentList: any;
   /*end variable*/
 
 
@@ -24,6 +25,7 @@ export class PaitentmoduleComponent implements OnInit {
     this.getAllPaitent();
     this.createForm();
     this.getDoctor();
+    this.getDepartment();
   }
 
 
@@ -67,6 +69,12 @@ export class PaitentmoduleComponent implements OnInit {
   onBackBtnClick() {
     this.isShowList = true;
     this.isAdd = false;
+  }
+
+  getDepartment() {
+    this.http.get<any>("https://localhost:7087/api/Department/GetAllDepartment").subscribe((response) => {
+      this.departmentList = response;
+    })
   }
   getDoctor() {
     this.http.get<any>("https://localhost:7087/api/employee/GetDoctor").subscribe((response) => {

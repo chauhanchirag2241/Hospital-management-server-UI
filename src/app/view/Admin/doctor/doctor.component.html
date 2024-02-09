@@ -97,20 +97,18 @@
         <form [formGroup]="employeeForm">
           <div class="row col-md-12">
 
-            <div class="col-md-4">
-              <mat-form-field appearance="outline" class="fieldsize ">
-                <mat-label>Department</mat-label>
-                <mat-select formControlName="departmentid" required>
+            <div class="col-md-4">             
+                
+                <mat-form-field appearance="outline" class="fieldsize">
+                  <mat-label>Department : </mat-label>
+                  <mat-select formControlName="departmentid">
 
-                  <mat-option value="1">Outpatient department</mat-option>
-                  <mat-option value="2">Surgical department</mat-option>
-                  <mat-option value="3">Inpatient service</mat-option>
-                  <mat-option value="4">Pharmacy department</mat-option>
-                  <mat-option value="5">adiology department (X-ray)</mat-option>
+                    <mat-option *ngFor="let dep of departmentList" value="{{dep.departmentId}}"> {{dep.departmentName}}  </mat-option>
 
-                </mat-select>
+                  </mat-select>
+                </mat-form-field>
                 <mat-error *ngIf="employeeForm.invalid">Department Is Required</mat-error>
-              </mat-form-field>
+             
             </div>
             <div class="col-md-4">
               <mat-form-field appearance="outline" class="fieldsize" required>
