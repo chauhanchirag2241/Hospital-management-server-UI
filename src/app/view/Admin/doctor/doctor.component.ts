@@ -20,22 +20,7 @@ export class DoctorComponent implements OnInit {
 
   ngOnInit() {
     this.getDepartment();
-    this.getAllEmployee();
-    //this.dataSource = [
-    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-    //  {doctorcode: '2241',doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-    //  { doctorcod: '2241', doctorname: 'chirag', qualification: 'MBBS', jobspecification: 'ABC' },
-
-    //]
+    this.getAllEmployee();    
   }
   displayedColumns: string[] = ['employeeCode', 'employeeName', 'gender', 'mobileNo', 'email', 'qualification','jobSpecification','edit','delete'];
   dataSource: any;

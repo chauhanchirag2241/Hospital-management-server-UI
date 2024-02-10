@@ -150,8 +150,8 @@
 
             <div class="col-6">
               <mat-form-field appearance="outline" class="col-6">
-                <mat-label>Disease</mat-label>
-                <input matInput placeholder="Disease" formControlName="disease">
+                <mat-label>Medical Issue</mat-label>
+                <input matInput placeholder="Medical Issue" formControlName="medicalIssue">
                 <!--formControlName="disease"-->
                 <!--<mat-icon matSuffix>search</mat-icon>-->
                 <!--<mat-hint>Hint</mat-hint>-->
@@ -169,7 +169,7 @@
 
               <mat-form-field appearance="outline" class="col-6"  >
                 <mat-label>Department : </mat-label>
-                <mat-select formControlName="assignId"  >
+                <mat-select formControlName="assignId"  (selectionChange)="getDoctors($event.value)"  >
                  
                   <mat-option  *ngFor="let dep of departmentList" value="{{dep.departmentId}}" > {{dep.departmentName}}  </mat-option>
                  

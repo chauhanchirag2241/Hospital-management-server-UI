@@ -23,8 +23,7 @@ export class PaitentmoduleComponent implements OnInit {
 
   ngOnInit() {
     this.getAllPaitent();
-    this.createForm();
-    this.getDoctor();
+    this.createForm();   
     this.getDepartment();
   }
 
@@ -39,7 +38,7 @@ export class PaitentmoduleComponent implements OnInit {
     this.paitentForm = this.formBuilder.group({
       paitentId: [''],
       paitentName: ['', [Validators.required]],
-      disease: ['', [Validators.required]],
+      medicalIssue: ['', [Validators.required]],
       assignId: ['', [Validators.required]],
       description: [''],
       medicinecon:[''],
@@ -76,10 +75,16 @@ export class PaitentmoduleComponent implements OnInit {
       this.departmentList = response;
     })
   }
-  getDoctor() {
-    this.http.get<any>("https://localhost:7087/api/employee/GetDoctor").subscribe((response) => {
-      this.doctorList = response;
-    })
+  getDoctors(depId: any) {
+    
+    this.http.get<any>(`https://localhost:7087/api/employee/GetDoctor/${depId}`)
+      .subscribe((res) => {
+        this.doctorList = res;
+             });
+
+    //this.http.get<any>("https://localhost:7087/api/employee/GetDoctor").subscribe((response) => {
+    //  this.doctorList = response;
+    //})
   }
 
   onEdit(element: any) {
@@ -90,6 +95,7 @@ export class PaitentmoduleComponent implements OnInit {
     this.paitentForm.patchValue({
       paitentName: this.res.firstName + " " + this.res.lastName,
       paitentId: this.res.paitentId,
+      medicalIssue: this.res.medicalIssue,
     });
   }
   getAllPaitent() {
