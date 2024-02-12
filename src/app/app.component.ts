@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   currentUrl: any;
 
   constructor(private route: Router) {
-    this.route.navigate(['login']);
+   // this.route.navigate(['login']);
   }
   ngOnInit() {
     //this.route.routeConfig.component.name

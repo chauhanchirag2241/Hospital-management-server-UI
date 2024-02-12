@@ -25,6 +25,7 @@ import { MedicineComponent } from './view/Admin/medicine/medicine.component';
 import { LoginComponent } from './view/Auth/login/login.component';
 import { RegisterComponent } from './view/Auth/register/register.component';
 import { NavbarComponent } from './view/Admin/navbar/navbar.component';
+import { PaitentvisitedashboardComponent } from './view/Admin/paitentvisitedashboard/paitentvisitedashboard.component';
 
 //import { MatTableDataSource } from '@angular/material/table';
 @NgModule({
@@ -36,7 +37,8 @@ import { NavbarComponent } from './view/Admin/navbar/navbar.component';
     MedicineComponent,
     LoginComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    PaitentvisitedashboardComponent
   ],
   imports: [
     BrowserModule,

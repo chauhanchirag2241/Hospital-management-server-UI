@@ -18,6 +18,8 @@ export class PaitentmoduleComponent implements OnInit {
   res: any;
   doctorList: any;
   departmentList: any;
+  response: any;
+  medicineList: any;
   /*end variable*/
 
 
@@ -25,13 +27,14 @@ export class PaitentmoduleComponent implements OnInit {
     this.getAllPaitent();
     this.createForm();   
     this.getDepartment();
+    this.getAllMedicine();
   }
 
 
   displayedColumns: string[] = ['firstName', 'lastName', 'mobileNo', 'emergencyContectNo', 'birthDate', 'email', 'gender', 'address', 'bloodGroup', 'medicalIssue', 'doctorId', 'visiteDate','timeingShift','edit','delete'];
   dataSource: any;
   medicines = new FormControl('');
-  medicineList: string[] = ['Adrenaline', 'Dopamine', 'paracetamol', 'Dupixent', 'Plan B', 'Lexapro', 'Nurtec', 'Entresto', 'Meloxicam','Naproxen'];
+  
   constructor(public formBuilder: FormBuilder, private http: HttpClient) { }
 
   createForm() {
@@ -40,6 +43,7 @@ export class PaitentmoduleComponent implements OnInit {
       paitentName: ['', [Validators.required]],
       medicalIssue: ['', [Validators.required]],
       assignId: ['', [Validators.required]],
+      status: [''],
       description: [''],
       medicinecon:[''],
 
@@ -87,6 +91,15 @@ export class PaitentmoduleComponent implements OnInit {
     //})
   }
 
+  getAllMedicine() {
+
+    this.http.get<any>(`https://localhost:7087/api/medicine/GetAllMedicine`)
+      .subscribe((res) => {
+        this.medicineList = res;
+      });
+
+  }
+
   onEdit(element: any) {
     
     this.takePaitent = true;
@@ -102,5 +115,21 @@ export class PaitentmoduleComponent implements OnInit {
     this.http.get<any>("https://localhost:7087/api/Paitent/GetAll").subscribe((res) => {
       this.dataSource = res;
     })
+  }
+
+  addPaitentVisite() {
+    console.log(this.paitentForm.value);
+    this.http.post<any>("https://localhost:7087/api/Employee/Add", this.paitentForm.value)
+      .subscribe((res) => {
+        this.response = res;
+       
+        // if (this.response.statusCode == 200) {
+        //this.toasrt.success("Employee Created. 😎")
+        //this.router.navigate(['employee']);
+        //  }
+        // else {
+        // this.toasrt.error("Error While Creating Employee. 😒😰")
+        // }
+      });
   }
 }

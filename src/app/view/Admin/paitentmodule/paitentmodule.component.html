@@ -137,9 +137,9 @@
     <mat-card-content>
       <div class="popdiv">
         <form [formGroup]="paitentForm">
-          <div class="row col-md-12">
+          <div class="row">
             <div class="col-6">
-              <mat-form-field appearance="outline" class="col-6" >
+              <mat-form-field appearance="outline" class="col-6">
                 <!--formControlName="paitentName"-->
                 <mat-label>Paitent Name</mat-label>
                 <input matInput placeholder="ABC" formControlName="paitentName">
@@ -157,22 +157,16 @@
                 <!--<mat-hint>Hint</mat-hint>-->
               </mat-form-field>
             </div>
-
+          </div>
+          <div class="row">
             <div class="col-6">
-              <!--<mat-form-field appearance="outline" class="fieldsize">-->
-              <!--formControlName="assignId"-->
-              <!--<mat-label>Assign To : </mat-label>
-  <input matInput placeholder="Assign To" formControlName="assignId">-->
-              <!--<mat-icon matSuffix>search</mat-icon>-->
-              <!--<mat-hint>Hint</mat-hint>-->
-              <!--</mat-form-field>-->
 
-              <mat-form-field appearance="outline" class="col-6"  >
+              <mat-form-field appearance="outline" class="col-6">
                 <mat-label>Department : </mat-label>
-                <mat-select formControlName="assignId"  (selectionChange)="getDoctors($event.value)"  >
-                 
-                  <mat-option  *ngFor="let dep of departmentList" value="{{dep.departmentId}}" > {{dep.departmentName}}  </mat-option>
-                 
+                <mat-select formControlName="assignId" (selectionChange)="getDoctors($event.value)">
+
+                  <mat-option *ngFor="let dep of departmentList" value="{{dep.departmentId}}"> {{dep.departmentName}}  </mat-option>
+
                 </mat-select>
               </mat-form-field>
 
@@ -187,6 +181,21 @@
                 </mat-select>
               </mat-form-field>
             </div>
+           
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="col-6">
+                <mat-select formControlName="status">
+                  <mat-option value="New">New</mat-option>
+                  <mat-option value="InProgress">In Progress</mat-option>
+                  <mat-option value="Admit">Admit</mat-option>
+                  <mat-option value="Discharged">Discharged</mat-option>
+                </mat-select>
+                <mat-label>Status</mat-label>
+              </mat-form-field>
+            </div>
+          </div>
             <div class="col-12 mt-3">
               <mat-form-field class="col-12" appearance="outline">
                 <mat-label>Description</mat-label>
@@ -206,12 +215,12 @@
                 <!--formControlName="medicine"-->
                 <mat-label>Select Medicine</mat-label>
                 <mat-select formControlName="medicinecon"  multiple >
-                  <mat-option *ngFor="let medicine of medicineList" [value]="medicine">{{medicine}}</mat-option>
+                  <mat-option *ngFor="let medicine of medicineList" [value]="medicine.medicineId">{{medicine.medicineName}}</mat-option>
                 </mat-select>
               </mat-form-field>
 
             </div>
-          </div>
+
         </form>
       </div>
 
@@ -221,7 +230,7 @@
       <!--<button mat-button>LIKE</button>
       <button mat-button>SHARE</button>-->
       <button mat-fab class="btn btn-danger " (click)="onBackBtnClick()">Cancel</button>
-      <button mat-fab class="btn btn-success " style="margin-left:15px;">Submit</button>
+      <button mat-fab class="btn btn-success " style="margin-left:15px;" (click)="addPaitentVisite()">Submit</button>
     </mat-card-actions>
   </mat-card>
 </div>
