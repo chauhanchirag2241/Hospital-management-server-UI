@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { LoginService } from './Services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -8,27 +9,25 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'hospitalmanagementserverui';
-  showNavigation: any;
-  currentUrl: any;
-
-  constructor(private route: Router) {
-   // this.route.navigate(['login']);
+ 
+  constructor() {
+   
+    
   }
   ngOnInit() {
     //this.route.routeConfig.component.name
-    console.log(this.route.url);
-
-    this.route.events.subscribe((event: any) => {
-      console.log(event);
-      if (event instanceof NavigationEnd) {
-        this.currentUrl = event.url;
-        if (this.currentUrl == "/login") {
-          this.showNavigation = false;
-        } else {
-          this.showNavigation = true;
-        }
-      }
-    });
+    
+    //this.route.events.subscribe((event: any) => {
+    //  console.log(event);
+    //  if (event instanceof NavigationEnd) {
+    //    this.currentUrl = event.url;
+    //    if (this.currentUrl == "/login") {
+    //      this.showNavigation = false;
+    //    } else {
+    //      this.showNavigation = true;
+    //    }
+    //  }
+    //});
    
   }
 }

@@ -26,6 +26,8 @@ import { LoginComponent } from './view/Auth/login/login.component';
 import { RegisterComponent } from './view/Auth/register/register.component';
 import { NavbarComponent } from './view/Admin/navbar/navbar.component';
 import { PaitentvisitedashboardComponent } from './view/Admin/paitentvisitedashboard/paitentvisitedashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardadminComponent } from './view/Admin/dashboardadmin/dashboardadmin.component';
 
 //import { MatTableDataSource } from '@angular/material/table';
 @NgModule({
@@ -38,7 +40,9 @@ import { PaitentvisitedashboardComponent } from './view/Admin/paitentvisitedashb
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    PaitentvisitedashboardComponent
+    PaitentvisitedashboardComponent,
+    DashboardComponent,
+    DashboardadminComponent
   ],
   imports: [
     BrowserModule,

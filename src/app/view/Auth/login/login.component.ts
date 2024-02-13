@@ -20,7 +20,7 @@ export class LoginComponent {
     const userName = this.userName;
     const password = this.password;
 
-    this.http.get<any>(`https://localhost:7087/api/ServerUser/checkLogin/${userName}/${password}`)
+    this.http.get<any>(`https://localhost:7087/api/Employee/checkLogin/${userName}/${password}`)
       .subscribe(res => {
         this.response = res;
         console.log(this.response);
@@ -28,10 +28,10 @@ export class LoginComponent {
         // // this.toastr.error("Invalid UserName Or Password!! 😰😒");
         //}
         if (res != null) {
-          this.userName = this.response[0].userName;
+          this.userName = this.response[0].employeeName;
           this.userData = this.response;
           this.updateLogin(this.userData);
-          this.router.navigate(['dashboard']);
+          this.router.navigateByUrl('/dashboardadmin')
         }
         
         //// this.data = this.response.dataList;

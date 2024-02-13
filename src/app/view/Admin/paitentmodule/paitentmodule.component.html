@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <!--#region list view-->
 
 <div *ngIf="isShowList">
@@ -163,7 +164,7 @@
 
               <mat-form-field appearance="outline" class="col-6">
                 <mat-label>Department : </mat-label>
-                <mat-select formControlName="assignId" (selectionChange)="getDoctors($event.value)">
+                <mat-select  (selectionChange)="getDoctors($event.value)">
 
                   <mat-option *ngFor="let dep of departmentList" value="{{dep.departmentId}}"> {{dep.departmentName}}  </mat-option>
 
@@ -174,7 +175,7 @@
             <div class="col-6">
               <mat-form-field appearance="outline" class="col-6">
                 <mat-label>Assign To : </mat-label>
-                <mat-select formControlName="assignId">
+                <mat-select formControlName="assignToId">
 
                   <mat-option *ngFor="let doc of doctorList" value="{{doc.employeeId}}"> {{doc.employeeCode}}  -  {{doc.employeeName}} - {{doc.qualification}} </mat-option>
 
@@ -214,7 +215,7 @@
               <mat-form-field appearance="outline"  class="col-12"  >
                 <!--formControlName="medicine"-->
                 <mat-label>Select Medicine</mat-label>
-                <mat-select formControlName="medicinecon"  multiple >
+                <mat-select formControlName="medicineIds"  multiple >
                   <mat-option *ngFor="let medicine of medicineList" [value]="medicine.medicineId">{{medicine.medicineName}}</mat-option>
                 </mat-select>
               </mat-form-field>

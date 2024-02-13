@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './view/Admin/dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardadminComponent } from './view/Admin/dashboardadmin/dashboardadmin.component';
 import { DoctorComponent } from './view/Admin/doctor/doctor.component';
 import { PaitentmoduleComponent } from './view/Admin/paitentmodule/paitentmodule.component';
 import { PaitentvisitedashboardComponent } from './view/Admin/paitentvisitedashboard/paitentvisitedashboard.component';
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'paitentvisitedashboard',
     component: PaitentvisitedashboardComponent
+  },
+  {
+    path: 'dashboardadmin',
+    component: DashboardadminComponent
   }
 ];
 

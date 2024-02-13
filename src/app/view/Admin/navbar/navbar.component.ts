@@ -16,6 +16,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.login.shareLoginData.subscribe(x => this.loginData = x);
     console.log("from home work login details : " + this.loginData);
-    this.userName = this.loginData[0].userName;
+    this.userName = this.loginData[0].employeeName;
   }
 }

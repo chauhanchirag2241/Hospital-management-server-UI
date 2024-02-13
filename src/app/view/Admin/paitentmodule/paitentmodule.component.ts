@@ -42,10 +42,11 @@ export class PaitentmoduleComponent implements OnInit {
       paitentId: [''],
       paitentName: ['', [Validators.required]],
       medicalIssue: ['', [Validators.required]],
-      assignId: ['', [Validators.required]],
+      assignToId: ['', [Validators.required]],
+      addedById:['2'],
       status: [''],
       description: [''],
-      medicinecon:[''],
+      medicineIds:[''],
 
     });
   }
@@ -119,7 +120,7 @@ export class PaitentmoduleComponent implements OnInit {
 
   addPaitentVisite() {
     console.log(this.paitentForm.value);
-    this.http.post<any>("https://localhost:7087/api/Employee/Add", this.paitentForm.value)
+    this.http.post<any>("https://localhost:7087/api/PaitentVisite/Add", this.paitentForm.value)
       .subscribe((res) => {
         this.response = res;
        
