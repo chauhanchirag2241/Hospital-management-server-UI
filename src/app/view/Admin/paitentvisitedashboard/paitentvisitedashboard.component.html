@@ -1,1 +1,110 @@
-<p>paitentvisitedashboard works!</p>
+<app-navbar></app-navbar>
+
+<!--#region Add View-->
+<div>
+  <mat-card>
+    <mat-card-header class="bg-dark headermargin">
+      <mat-card-title class="text-white">Paitent Details</mat-card-title>
+      <!--<button class="btn btn-primary backbtn" >Back To List</button>-->
+      <!--<mat-card-subtitle>End</mat-card-subtitle>-->
+    </mat-card-header>
+    <mat-card-content>
+      <div class="popdiv">
+        <form [formGroup]="paitentForm">
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="col-6">
+                <!--formControlName="paitentName"-->
+                <mat-label>Paitent Name</mat-label>
+                <input matInput placeholder="ABC" formControlName="paitentName">
+                <!--<mat-icon matSuffix>search</mat-icon>-->
+                <!--<mat-hint>Hint</mat-hint>-->
+              </mat-form-field>
+            </div>
+
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="col-6">
+                <mat-label>Medical Issue</mat-label>
+                <input matInput placeholder="Medical Issue" formControlName="medicalIssue">
+                <!--formControlName="disease"-->
+                <!--<mat-icon matSuffix>search</mat-icon>-->
+                <!--<mat-hint>Hint</mat-hint>-->
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+
+              <mat-form-field appearance="outline" class="col-6">
+                <mat-label>Department : </mat-label>
+                <mat-select (selectionChange)="getDoctors($event.value)">
+
+                  <mat-option *ngFor="let dep of departmentList" value="{{dep.departmentId}}"> {{dep.departmentName}}  </mat-option>
+
+                </mat-select>
+              </mat-form-field>
+
+            </div>
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="col-6">
+                <mat-label>Assign To : </mat-label>
+                <mat-select formControlName="assignToId">
+
+                  <mat-option *ngFor="let doc of doctorList" value="{{doc.employeeId}}"> {{doc.employeeCode}}  -  {{doc.employeeName}} - {{doc.qualification}} </mat-option>
+
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="col-6">
+                <mat-select formControlName="status">
+                  <mat-option value="New">New</mat-option>
+                  <mat-option value="InProgress">In Progress</mat-option>
+                  <mat-option value="Admit">Admit</mat-option>
+                  <mat-option value="Discharged">Discharged</mat-option>
+                </mat-select>
+                <mat-label>Status</mat-label>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="col-12 mt-3">
+            <mat-form-field class="col-12" appearance="outline">
+              <mat-label>Description</mat-label>
+              <textarea matInput
+                        cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="1"
+                        cdkAutosizeMaxRows="20"
+                        formControlName="description"></textarea>
+              <!---->
+            </mat-form-field>
+          </div>
+
+          <div class="col-12 mt-3">
+            <mat-form-field appearance="outline" class="col-12">
+              <!--formControlName="medicine"-->
+              <mat-label>Select Medicine</mat-label>
+              <mat-select formControlName="medicineIds" multiple>
+                <mat-option *ngFor="let medicine of medicineList" [value]="medicine.medicineId">{{medicine.medicineName}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+        </form>
+      </div>
+
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions align="end" class="bg-dark">
+      <!--<button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>-->
+      <button mat-fab class="btn btn-danger " >Cancel</button>
+      <button mat-fab class="btn btn-success " style="margin-left:15px;" (click)="addPaitentVisite()">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<!--#endregion end of Add view-->
