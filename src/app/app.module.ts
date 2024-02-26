@@ -28,6 +28,8 @@ import { NavbarComponent } from './view/Admin/navbar/navbar.component';
 import { PaitentvisitedashboardComponent } from './view/Admin/paitentvisitedashboard/paitentvisitedashboard.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardadminComponent } from './view/Admin/dashboardadmin/dashboardadmin.component';
+import { HomeuiComponent } from './view/Admin/homeui/homeui.component';
+import { SliderhomeComponent } from './view/Admin/sliderhome/sliderhome.component';
 
 //import { MatTableDataSource } from '@angular/material/table';
 @NgModule({
@@ -42,7 +44,9 @@ import { DashboardadminComponent } from './view/Admin/dashboardadmin/dashboardad
     NavbarComponent,
     PaitentvisitedashboardComponent,
     DashboardComponent,
-    DashboardadminComponent
+    DashboardadminComponent,
+    HomeuiComponent,
+    SliderhomeComponent
   ],
   imports: [
     BrowserModule,
