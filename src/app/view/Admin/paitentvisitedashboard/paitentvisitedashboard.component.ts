@@ -11,6 +11,9 @@ import { LoginService } from '../../../Services/login.service';
 export class PaitentvisitedashboardComponent {
   /*Variable*/
   paitentVissiteList: any;
+  allPaitentVissiteList: any;
+  dataSource: any;
+  isShowList: any = true;
   loginData: any;
   userName: any;
   paitentForm!: FormGroup;
@@ -21,42 +24,54 @@ export class PaitentvisitedashboardComponent {
   paitentList: any;
   /*end variable*/
   constructor(public formBuilder: FormBuilder, private http: HttpClient, private login: LoginService) { }
-
+  displayedColumns: string[] = ['paitentName', 'description', 'status', 'assignbyname', 'edit', 'delete'];
   ngOnInit(): void {
     this.login.shareLoginData.subscribe((x: any) => this.loginData = x);
     console.log("from paitentvisite : " + this.loginData);
     this.userName = this.loginData[0].employeeName;
-    this.getPaitentVisiteByEmployeeId();
     this.createForm();
     this.getDepartment();
-    this.getAllMedicine();
+    this.getAllPaitentVisiteByEmployeeId();
   }
 
-  getPaitentVisiteByEmployeeId() {
+  getAllPaitentVisiteByEmployeeId() {
     const emplooyeeId = this.loginData[0].employeeId;
-    this.http.get<any>(`https://localhost:7087/api/PaitentVisite/GetAllAssignPaitent/${emplooyeeId}`).subscribe((res) => {
+    this.http.get<any>(`https://localhost:7087/api/PaitentVisite/GetAllAssignPaitentInfo/${emplooyeeId}`).subscribe((res) => {
+      this.allPaitentVissiteList = res;
+      this.dataSource = this.allPaitentVissiteList;
+    });
+  }
+
+  onEdit(paitentVisiteDetail: any) {
+    this.isShowList = false;
+    this.getAllMedicine();
+    this.getPaitentVisiteByEmployeeId(paitentVisiteDetail.paitentId);
+  }
+
+  getPaitentVisiteByEmployeeId(paitentId: any) {
+    const emplooyeeId = this.loginData[0].employeeId;
+    this.http.get<any>(`https://localhost:7087/api/PaitentVisite/GetAllAssignPaitent/${emplooyeeId}/${paitentId}`).subscribe((res) => {
       this.paitentVissiteList = res[0];
       console.log(this.paitentVissiteList);
       this.paitentForm.patchValue({
         description: this.paitentVissiteList.description,
         paitentId: this.paitentVissiteList.paitentId,
-     
+
       });
       this.getPaitent();
-    })  
+    })
   }
   getPaitent() {
     const paitentId = this.paitentVissiteList.paitentId;
-      this.http.get<any>(`https://localhost:7087/api/Paitent/GetPaitentByPaitentId/${paitentId}`)
-        .subscribe((res) => {
-          this.paitentList = res[0];
-          this.paitentForm.patchValue({
-            paitentName: this.paitentList.firstName + " " + this.paitentList.lastName,
-            paitentId: this.paitentList.paitentId,
-            medicalIssue: this.paitentList.medicalIssue,
-          });
+    this.http.get<any>(`https://localhost:7087/api/Paitent/GetPaitentByPaitentId/${paitentId}`)
+      .subscribe((res) => {
+        this.paitentList = res[0];
+        this.paitentForm.patchValue({
+          paitentName: this.paitentList.firstName + " " + this.paitentList.lastName,
+          paitentId: this.paitentList.paitentId,
+          medicalIssue: this.paitentList.medicalIssue,
         });
-
+      });
   }
   createForm() {
     this.paitentForm = this.formBuilder.group({
@@ -67,8 +82,8 @@ export class PaitentvisitedashboardComponent {
       addedById: [''],
       status: [''],
       description: [''],
+      medicineIdsArr: [''],
       medicineIds: [''],
-
     });
   }
 
@@ -77,6 +92,18 @@ export class PaitentvisitedashboardComponent {
     this.paitentForm.patchValue({
       addedById: this.loginData[0].employeeId,
     });
+    const medicineIdsArrControl = this.paitentForm.get('medicineIdsArr')?.value;
+    if (medicineIdsArrControl != "") {
+      const medicine = medicineIdsArrControl.value.join(",");
+      this.paitentForm.patchValue({
+        medicineIds: medicine,
+      });
+    }
+    //var medicine = this.paitentForm.get('medicineIdsArr')?.value.join(",");
+
+    //this.paitentForm.patchValue({
+    //  medicineIds : medicine,
+    //});
     this.http.post<any>("https://localhost:7087/api/PaitentVisite/Add", this.paitentForm.value)
       .subscribe((res) => {
         this.response = res;
@@ -88,7 +115,7 @@ export class PaitentvisitedashboardComponent {
 
     this.http.get<any>(`https://localhost:7087/api/medicine/GetAllMedicine`)
       .subscribe((res) => {
-        this.medicineList = res[0];
+        this.medicineList = res;
       });
 
   }
