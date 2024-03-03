@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+<div  *ngIf="isShowList">
+  <div class="info">
+    <div class="btn">
+      <div class="form-date">
+        <mat-form-field appearance="outline" style="margin-top: 20px; margin-left: 1100px">
+          <mat-label>Search By Name</mat-label>
+          <input matInput placeholder="Search Here">
+          <mat-icon matSuffix>search</mat-icon>
+          <!--<mat-hint>Hint</mat-hint>-->
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="dttablediv" *ngIf="isShowList">
+  <div class="mat-elevation-z8 tablecen">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="paitentName">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Paitent Name</th>
+        <td mat-cell *matCellDef="let element">  {{element.paitentName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Status</th>
+        <td mat-cell *matCellDef="let element">  {{element.status}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="addedByName">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Doctor Name</th>
+        <td mat-cell *matCellDef="let element">  {{element.addedByName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="medicineNames">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Medicine Names</th>
+        <td mat-cell *matCellDef="let element">  {{element.medicineNames}} </td>
+      </ng-container>
+
+
+
+      <!--Symbol Column-->
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark" > Edit </th>
+        <td mat-cell *matCellDef="let element">
+          <!--(click)="onEdit(element)"-->
+          <span class="material-icons" role="button" style="color:blueviolet; size: 15px;" (click)="onEdit(element)">mode_edit</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Delete </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="material-icons" style="color:red; size: 15px;">delete</span>
+        </td>
+      </ng-container>
+
+      <!--(click)="onEdit(element.admissionid)"-->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="!isShowList">
+
+</div>

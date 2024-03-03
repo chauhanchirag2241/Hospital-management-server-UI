@@ -30,6 +30,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardadminComponent } from './view/Admin/dashboardadmin/dashboardadmin.component';
 import { HomeuiComponent } from './view/Admin/homeui/homeui.component';
 import { SliderhomeComponent } from './view/Admin/sliderhome/sliderhome.component';
+import { MedicaldepartmentComponent } from './view/Admin/medicaldepartment/medicaldepartment.component';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 //import { MatTableDataSource } from '@angular/material/table';
 @NgModule({
@@ -46,7 +48,8 @@ import { SliderhomeComponent } from './view/Admin/sliderhome/sliderhome.componen
     DashboardComponent,
     DashboardadminComponent,
     HomeuiComponent,
-    SliderhomeComponent
+    SliderhomeComponent,
+    MedicaldepartmentComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +67,8 @@ import { SliderhomeComponent } from './view/Admin/sliderhome/sliderhome.componen
     MatSelectModule,
     HttpClientModule,
     MatRadioModule,
+    
+    NgxMatSelectSearchModule,
     //MatTableDataSource,
   ],
   providers: [],

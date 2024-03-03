@@ -152,12 +152,9 @@
               <mat-label>Select Medicine</mat-label>
               <mat-select formControlName="medicineIdsArr" multiple>
                 <mat-option *ngFor="let medicine of medicineList" [value]="medicine.medicineId"><span style="color:brown">Medicine Name :</span> {{medicine.medicineName}} <br> <span style="color: brown"> Description : </span> {{medicine.discription}} <br><br> </mat-option>
-
               </mat-select>
             </mat-form-field>
-
           </div>
-
         </form>
       </div>
 

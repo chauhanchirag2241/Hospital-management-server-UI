@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardadminComponent } from './view/Admin/dashboardadmin/dashboardadmin.component';
 import { DoctorComponent } from './view/Admin/doctor/doctor.component';
 import { HomeuiComponent } from './view/Admin/homeui/homeui.component';
+import { MedicaldepartmentComponent } from './view/Admin/medicaldepartment/medicaldepartment.component';
 import { PaitentmoduleComponent } from './view/Admin/paitentmodule/paitentmodule.component';
 import { PaitentvisitedashboardComponent } from './view/Admin/paitentvisitedashboard/paitentvisitedashboard.component';
 import { PaymentComponent } from './view/Admin/payment/payment.component';
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'homeui',
     component: HomeuiComponent
+  },
+  {
+    path: 'medicaldepartment',
+    component: MedicaldepartmentComponent
   }
 ];
 

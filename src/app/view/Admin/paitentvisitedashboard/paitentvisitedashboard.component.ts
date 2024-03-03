@@ -94,7 +94,7 @@ export class PaitentvisitedashboardComponent {
     });
     const medicineIdsArrControl = this.paitentForm.get('medicineIdsArr')?.value;
     if (medicineIdsArrControl != "") {
-      const medicine = medicineIdsArrControl.value.join(",");
+      const medicine = medicineIdsArrControl.join(",");
       this.paitentForm.patchValue({
         medicineIds: medicine,
       });
@@ -117,7 +117,6 @@ export class PaitentvisitedashboardComponent {
       .subscribe((res) => {
         this.medicineList = res;
       });
-
   }
 
   getDepartment() {
