@@ -92,10 +92,10 @@ export class MedicaldepartmentComponent implements OnInit {
   downloadBill() {
     // Create a new jsPDF instance
     const doc = new jsPDF();
-
+    const paitentName = this.paitentName;
     // Add title
     doc.setFontSize(16);
-    doc.text('Bill', 10, 10);
+    doc.text(`${paitentName} Medical Bill`, 10, 10);
 
     // Define table headers
     const headers = ['Medicine Name', 'Quantity', 'Total Amount'];
@@ -135,7 +135,7 @@ export class MedicaldepartmentComponent implements OnInit {
     doc.text(`Total: ${totalAmount}`, 100, currentY + 10);
 
     // Save the PDF
-    const paitentName = this.paitentName;
+   
     doc.save(`${paitentName}_bill.pdf`);
   }
 
