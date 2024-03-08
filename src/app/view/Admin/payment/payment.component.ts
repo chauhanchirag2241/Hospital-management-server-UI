@@ -37,7 +37,7 @@ export class PaymentComponent implements OnInit {
   options = {
     "key": "rzp_test_4CfDyVjD28HBbF",
     "amount": "200",
-    "name": "Student Fess",
+    "name": "Medicle Bill",
     "description": "Web Development",
     "image": "https://as1.ftcdn.net/v2/jpg/05/96/50/44/1000_F_596504439_730T1GKamBvlKUfXqfDhpe90oIIULCTz.jpg",
     "order_id": "",

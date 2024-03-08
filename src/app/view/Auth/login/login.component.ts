@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { LoginService } from '../../../Services/login.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { LoginService } from '../../../Services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private http: HttpClient, private login: LoginService, private router: Router) { }
+  constructor(private http: HttpClient, private login: LoginService, private router: Router, private toastr: ToastrService) { }
   /*variables*/
   userName: any;
   password: any;
@@ -31,7 +32,8 @@ export class LoginComponent {
           this.userName = this.response[0].employeeName;
           this.userData = this.response;
           this.updateLogin(this.userData);
-          this.router.navigateByUrl('/dashboardadmin')
+          this.router.navigateByUrl('/dashboardadmin');
+          this.toastr.success("Login Success.😊");
         }
         
         //// this.data = this.response.dataList;
@@ -41,9 +43,9 @@ export class LoginComponent {
         //else {
         //  this.router.navigate(['dashboaradstudent']);
         //}
-        //this.toastr.success("Login Success!! 😎");
+        this.toastr.error("Invalid UserName Or Password 😓");
       }, err => {
-        //this.toastr.error("Invalid UserName Or Password!!");
+        this.toastr.error("Invalid UserName Or Password 😓");
 
       });
     // if(this.userName == "")

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class DoctorComponent implements OnInit {
   displayedColumns: string[] = ['employeeCode', 'employeeName', 'gender', 'mobileNo', 'email', 'qualification','jobSpecification','edit','delete'];
   dataSource: any;
 
-  constructor(public formBuilder: FormBuilder, private http: HttpClient) { }
+  constructor(public formBuilder: FormBuilder, private http: HttpClient, private toastr: ToastrService) { }
   //, private toasrt: ToastrService
   //openDialog() {
   //  const dialogRef = this.dialog.open(NewdoctorComponent, {
@@ -65,13 +66,14 @@ export class DoctorComponent implements OnInit {
       .subscribe((res) => {
         this.response = res;
         this.getAllEmployee();
-       // if (this.response.statusCode == 200) {
-          //this.toasrt.success("Employee Created. 😎")
-          //this.router.navigate(['employee']);
-      //  }
-       // else {
-         // this.toasrt.error("Error While Creating Employee. 😒😰")
-       // }
+
+        if (this.response > 0) {
+          this.toastr.success("Employee Created. 😎")
+          this.onBackBtnClick();
+        }
+        else {
+          this.toastr.error("Error While Creating Employee. 😒😰")
+        }
       });
   }
 

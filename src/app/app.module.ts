@@ -32,6 +32,7 @@ import { HomeuiComponent } from './view/Admin/homeui/homeui.component';
 import { SliderhomeComponent } from './view/Admin/sliderhome/sliderhome.component';
 import { MedicaldepartmentComponent } from './view/Admin/medicaldepartment/medicaldepartment.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { ToastrModule } from 'ngx-toastr';
 
 //import { MatTableDataSource } from '@angular/material/table';
 @NgModule({
@@ -69,6 +70,8 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     MatRadioModule,
     
     NgxMatSelectSearchModule,
+    ToastrModule.forRoot(), 
+
     //MatTableDataSource,
   ],
   providers: [],

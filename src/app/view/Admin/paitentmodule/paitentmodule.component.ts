@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -35,7 +36,7 @@ export class PaitentmoduleComponent implements OnInit {
   dataSource: any;
   medicines = new FormControl('');
   
-  constructor(public formBuilder: FormBuilder, private http: HttpClient) { }
+  constructor(public formBuilder: FormBuilder, private http: HttpClient, private toastr: ToastrService) { }
 
   createForm() {
     this.paitentForm = this.formBuilder.group({
@@ -124,13 +125,13 @@ export class PaitentmoduleComponent implements OnInit {
       .subscribe((res) => {
         this.response = res;
        
-        // if (this.response.statusCode == 200) {
-        //this.toasrt.success("Employee Created. 😎")
-        //this.router.navigate(['employee']);
-        //  }
-        // else {
-        // this.toasrt.error("Error While Creating Employee. 😒😰")
-        // }
+         if (this.response > 1) {
+           this.toastr.success("Paitent Visite Created. 😎")
+           this.onBackBtnClick();
+          }
+         else {
+           this.toastr.error("Error While Paitent Visite. 😒😰")
+         }
       });
   }
 }

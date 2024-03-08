@@ -5,16 +5,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* table {
   width: 80%;
 } */
-.dttablediv { 
+.dttablediv {
   max-width: 1450px;
+  max-height: 350px;
+  overflow-y: auto;
   /* margin: 0 auto; */
 }
-
+  .thfix {
+    position: sticky;
+    top: 0;
+  } 
 .info {
   width: 100%;
  
 }
 
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: #3368c6; /* Adjust background color as needed */
+  z-index: 1;
+}
   .info .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -49,7 +60,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 500px;*/
   margin-left:50px;
   overflow-x: scroll;
-  overflow-y: scroll
+  
 }
 
 .backbtn {

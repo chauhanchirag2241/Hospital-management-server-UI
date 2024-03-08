@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { LoginService } from '../../../Services/login.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class PaitentvisitedashboardComponent {
   doctorList: any;
   paitentList: any;
   /*end variable*/
-  constructor(public formBuilder: FormBuilder, private http: HttpClient, private login: LoginService) { }
+  constructor(public formBuilder: FormBuilder, private http: HttpClient, private login: LoginService, private toastr: ToastrService) { }
   displayedColumns: string[] = ['paitentName', 'description', 'status', 'assignbyname', 'edit', 'delete'];
   ngOnInit(): void {
     this.login.shareLoginData.subscribe((x: any) => this.loginData = x);
@@ -107,6 +108,14 @@ export class PaitentvisitedashboardComponent {
     this.http.post<any>("https://localhost:7087/api/PaitentVisite/Add", this.paitentForm.value)
       .subscribe((res) => {
         this.response = res;
+        if (res > 0) {
+          this.toastr.success("Paitent Visite Stored. 😊");
+          this.isShowList = true;
+          
+        }
+        else {
+          this.toastr.error("Error In Paitent Visite. 😒");
+        }
       });
   }
 

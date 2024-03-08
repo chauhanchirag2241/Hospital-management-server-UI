@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div  *ngIf="isShowList">
+<div *ngIf="isShowList">
   <div class="info">
     <div class="btn">
       <div class="form-date">
@@ -41,7 +41,7 @@
 
       <!--Symbol Column-->
       <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark" > Edit </th>
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Edit </th>
         <td mat-cell *matCellDef="let element">
           <!--(click)="onEdit(element)"-->
           <span class="material-icons" role="button" style="color:blueviolet; size: 15px;" (click)="onEdit(element)">mode_edit</span>
@@ -63,9 +63,11 @@
 </div>
 
 <div *ngIf="!isShowList">
-  <p>{{this.paitentName}}</p>
-  <p>{{this.giveMedicine}}</p>
-  <div class="container" style="border: 1px solid black; max-height: 200px; overflow-y: scroll;">
+  <div class="container">
+    <p style="font-weight: bold; color: #3368c6 "> Paitent Name : {{this.paitentName}}</p>
+    <p style="font-weight: bold; color: #3368c6 "> Medicines    : {{this.giveMedicine}}</p>
+  </div>
+  <div class="container" style="border: 1px solid black; max-height: 200px; overflow-y: scroll; padding:20px">
     <form [formGroup]="form">
       <div formArrayName="medicines">
         <div *ngFor="let control of medicineControls; let i = index" [formGroupName]="i">
@@ -153,5 +155,10 @@
       </tfoot>
     </table>
   </div>
+  <button class="btn btn-primary" (click)="storeTableData()"><i class="fa fa-download"></i>Pay Bill</button>
   <button class="btn btn-primary" (click)="downloadBill()"><i class="fa fa-download"></i> Download Bill</button>
 </div>
+
+<script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Lrzd0cyqrVvkIe"
+        async></script>
+<!--<button class="btn btn-success" (click)="paynow()">Pay Now</button>-->
