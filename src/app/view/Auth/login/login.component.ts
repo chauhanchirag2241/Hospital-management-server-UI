@@ -28,14 +28,16 @@ export class LoginComponent {
         //if (res.statusCode == 100) {
         // // this.toastr.error("Invalid UserName Or Password!! 😰😒");
         //}
-        if (res != null) {
+        if (res != null && res.length > 0) {
           this.userName = this.response[0].employeeName;
           this.userData = this.response;
           this.updateLogin(this.userData);
           this.router.navigateByUrl('/dashboardadmin');
           this.toastr.success("Login Success.😊");
         }
-        
+        else {
+          this.toastr.error("Invalid UserName Or Password 😓");
+        }
         //// this.data = this.response.dataList;
         //if (this.response.dataList[0].roleid == 2) {
         //  this.router.navigate(['dashboardadmin']);
@@ -43,7 +45,7 @@ export class LoginComponent {
         //else {
         //  this.router.navigate(['dashboaradstudent']);
         //}
-        this.toastr.error("Invalid UserName Or Password 😓");
+        //this.toastr.error("Invalid UserName Or Password 😓");
       }, err => {
         this.toastr.error("Invalid UserName Or Password 😓");
 

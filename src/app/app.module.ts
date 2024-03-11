@@ -33,8 +33,8 @@ import { SliderhomeComponent } from './view/Admin/sliderhome/sliderhome.componen
 import { MedicaldepartmentComponent } from './view/Admin/medicaldepartment/medicaldepartment.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { ToastrModule } from 'ngx-toastr';
+import { PagenotfoundComponent } from './view/Admin/pagenotfound/pagenotfound.component';
 
-//import { MatTableDataSource } from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +50,8 @@ import { ToastrModule } from 'ngx-toastr';
     DashboardadminComponent,
     HomeuiComponent,
     SliderhomeComponent,
-    MedicaldepartmentComponent
+    MedicaldepartmentComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +71,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatRadioModule,
     
     NgxMatSelectSearchModule,
+    
     ToastrModule.forRoot(), 
 
     //MatTableDataSource,

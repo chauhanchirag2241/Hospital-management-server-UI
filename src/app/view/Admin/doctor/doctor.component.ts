@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -79,8 +80,13 @@ export class DoctorComponent implements OnInit {
 
   getAllEmployee() {
     this.http.get<any>("https://localhost:7087/api/Employee/GetAllEmployee").subscribe((res) => {
-      this.dataSource = res;
+         /*this.dataSource = res;*/
+      this.dataSource = new MatTableDataSource(res);
     })
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   onAddBtnClick() {
     this.isShowList = false;

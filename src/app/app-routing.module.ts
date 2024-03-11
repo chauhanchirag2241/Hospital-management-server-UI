@@ -5,6 +5,7 @@ import { DashboardadminComponent } from './view/Admin/dashboardadmin/dashboardad
 import { DoctorComponent } from './view/Admin/doctor/doctor.component';
 import { HomeuiComponent } from './view/Admin/homeui/homeui.component';
 import { MedicaldepartmentComponent } from './view/Admin/medicaldepartment/medicaldepartment.component';
+import { PagenotfoundComponent } from './view/Admin/pagenotfound/pagenotfound.component';
 import { PaitentmoduleComponent } from './view/Admin/paitentmodule/paitentmodule.component';
 import { PaitentvisitedashboardComponent } from './view/Admin/paitentvisitedashboard/paitentvisitedashboard.component';
 import { PaymentComponent } from './view/Admin/payment/payment.component';
@@ -48,7 +49,8 @@ const routes: Routes = [
   {
     path: 'medicaldepartment',
     component: MedicaldepartmentComponent
-  }
+  },
+  { path: '**', component: PagenotfoundComponent }
 ];
 
 @NgModule({

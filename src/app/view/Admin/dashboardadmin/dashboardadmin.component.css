@@ -1,0 +1,10 @@
+.home-background {
+  background-image: url('../../../../assets/img/back.jpg'); /* Adjust the path as per your folder structure */
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Adjust the height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; /* Text color on top of the background image */
+}

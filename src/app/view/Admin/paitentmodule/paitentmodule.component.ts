@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -115,10 +116,14 @@ export class PaitentmoduleComponent implements OnInit {
   }
   getAllPaitent() {
     this.http.get<any>("https://localhost:7087/api/Paitent/GetAll").subscribe((res) => {
-      this.dataSource = res;
+      //this.dataSource = res;
+      this.dataSource = new MatTableDataSource(res);
     })
   }
-
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   addPaitentVisite() {
     console.log(this.paitentForm.value);
     this.http.post<any>("https://localhost:7087/api/PaitentVisite/Add", this.paitentForm.value)

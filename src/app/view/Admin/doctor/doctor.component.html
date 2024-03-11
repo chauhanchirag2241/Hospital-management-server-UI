@@ -11,12 +11,14 @@
       <button mat-fab extended class="btn btn-danger">
         Submited
       </button>
-      
+      <!--<mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>-->
       <mat-form-field appearance="outline" style="margin-top: 20px; margin-left:800px">
-        <mat-label>Search By Name</mat-label>
-        <input matInput placeholder="Search Here">
+        <mat-label>Search</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search Here">
         <mat-icon matSuffix>search</mat-icon>
-        <!--<mat-hint>Hint</mat-hint>-->
       </mat-form-field>
     </div>
   </div>

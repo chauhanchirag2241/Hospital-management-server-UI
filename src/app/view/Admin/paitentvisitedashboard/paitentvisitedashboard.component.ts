@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from '../../../Services/login.service';
 
@@ -39,10 +40,14 @@ export class PaitentvisitedashboardComponent {
     const emplooyeeId = this.loginData[0].employeeId;
     this.http.get<any>(`https://localhost:7087/api/PaitentVisite/GetAllAssignPaitentInfo/${emplooyeeId}`).subscribe((res) => {
       this.allPaitentVissiteList = res;
-      this.dataSource = this.allPaitentVissiteList;
+      //this.dataSource = this.allPaitentVissiteList;
+      this.dataSource = new MatTableDataSource(res);
     });
   }
-
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   onEdit(paitentVisiteDetail: any) {
     this.isShowList = false;
     this.getAllMedicine();
