@@ -1,0 +1,141 @@
+<app-navbar></app-navbar>
+<div class="btn">
+  <div class="form-date">
+
+    <button mat-fab class="btn btn-primary" (click)="onAddBtnClick()">
+      <!--(click)="openDialog()"-->
+      New
+    </button>
+    <button mat-fab extended class="btn btn-danger">
+      Submited
+    </button>
+
+    <mat-form-field appearance="outline" style="margin-top: 20px; margin-left:800px">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search Here">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+</div>
+
+<div class="dttablediv" *ngIf="isShowList">
+  <div class="mat-elevation-z8 tablecen">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="medicineName">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Medicine Name</th>
+        <td mat-cell *matCellDef="let element">  {{element.medicineName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark">Amount</th>
+        <td mat-cell *matCellDef="let element">  {{element.amount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="medicineCount">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Medicine Count</th>
+        <td mat-cell *matCellDef="let element">  {{element.medicineCount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="discription">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Description </th>
+        <td mat-cell *matCellDef="let element">  {{element.discription}} </td>
+      </ng-container>
+
+
+
+      <!--Symbol Column-->
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Edit </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="material-icons" role="button" style="color:blueviolet; size: 15px;">mode_edit</span>
+        </td>
+        <!--(click)="onEdit(element)"-->
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef class="text-white bg-dark"> Delete </th>
+        <td mat-cell *matCellDef="let element">
+          <span class="material-icons" style="color:red; size: 15px;">delete</span>
+        </td>
+      </ng-container>
+
+      <!--(click)="onEdit(element.admissionid)"-->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
+
+<!--#endregion end listview-->
+
+
+<div *ngIf="!isShowList">
+  <mat-card>
+    <mat-card-header class="bg-dark headermargin">
+      <mat-card-title class="text-white">Add Medicine</mat-card-title>
+      <!--<button class="btn btn-primary backbtn" (click)="onBackBtnClick()">Back To List</button>-->
+      <!--<mat-card-subtitle>End</mat-card-subtitle>-->
+    </mat-card-header>
+    <mat-card-content>
+      <div class="popdiv">
+        <form [formGroup]="medicineForm">
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="col-6">
+                <!--formControlName="paitentName"-->
+                <mat-label>Medicine Name</mat-label>
+                <input matInput placeholder="ABC" formControlName="medicineName">
+                <!--<mat-icon matSuffix>search</mat-icon>-->
+                <!--<mat-hint>Hint</mat-hint>-->
+              </mat-form-field>
+            </div>
+
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="col-6">
+                <mat-label>Amount</mat-label>
+                <input matInput placeholder="00.00" formControlName="amount">
+                <!--formControlName="disease"-->
+                <!--<mat-icon matSuffix>search</mat-icon>-->
+                <!--<mat-hint>Hint</mat-hint>-->
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="col-6">
+                <mat-label>Medicine Count</mat-label>
+                <input matInput placeholder="00.00" formControlName="medicineCount">
+                <!--formControlName="disease"-->
+                <!--<mat-icon matSuffix>search</mat-icon>-->
+                <!--<mat-hint>Hint</mat-hint>-->
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-12 mt-3">
+            <mat-form-field class="col-12" appearance="outline">
+              <mat-label>Description</mat-label>
+              <textarea matInput
+                        cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="1"
+                        cdkAutosizeMaxRows="20"
+                        formControlName="discription"></textarea>
+              <!---->
+            </mat-form-field>
+          </div>
+
+
+        </form>
+      </div>
+
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions align="end" class="bg-dark">
+      <!--<button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>-->
+      <button mat-fab class="btn btn-danger " (click)="onBackBtnClick()">Cancel</button>
+      <button mat-fab class="btn btn-success " style="margin-left:15px;" (click)="addMedicine()">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<!--#endregion end of Add view-->

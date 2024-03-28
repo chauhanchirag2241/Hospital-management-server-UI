@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AddmedicineComponent } from './view/Admin/addmedicine/addmedicine.component';
 import { DashboardadminComponent } from './view/Admin/dashboardadmin/dashboardadmin.component';
 import { DoctorComponent } from './view/Admin/doctor/doctor.component';
 import { HomeuiComponent } from './view/Admin/homeui/homeui.component';
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path: 'medicaldepartment',
     component: MedicaldepartmentComponent
+  },
+  {
+    path: 'addmedicine',
+    component: AddmedicineComponent
   },
   { path: '**', component: PagenotfoundComponent }
 ];

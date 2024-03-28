@@ -34,6 +34,7 @@ import { MedicaldepartmentComponent } from './view/Admin/medicaldepartment/medic
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { ToastrModule } from 'ngx-toastr';
 import { PagenotfoundComponent } from './view/Admin/pagenotfound/pagenotfound.component';
+import { AddmedicineComponent } from './view/Admin/addmedicine/addmedicine.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { PagenotfoundComponent } from './view/Admin/pagenotfound/pagenotfound.co
     HomeuiComponent,
     SliderhomeComponent,
     MedicaldepartmentComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    AddmedicineComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
+import { LoginService } from '../../../Services/login.service';
 
 
 @Component({
@@ -22,10 +23,18 @@ export class PaitentmoduleComponent implements OnInit {
   departmentList: any;
   response: any;
   medicineList: any;
+  loginData: any;
+  empId: any;
+  employeeType: any;
   /*end variable*/
 
 
   ngOnInit() {
+    this.login.shareLoginData.subscribe((x: any) => this.loginData = x);
+    console.log("from paitent  : " + this.loginData);
+    this.empId = this.loginData[0].employeeId;
+    this.employeeType = this.loginData[0].employeeType;
+
     this.getAllPaitent();
     this.createForm();   
     this.getDepartment();
@@ -37,7 +46,7 @@ export class PaitentmoduleComponent implements OnInit {
   dataSource: any;
   medicines = new FormControl('');
   
-  constructor(public formBuilder: FormBuilder, private http: HttpClient, private toastr: ToastrService) { }
+  constructor(public formBuilder: FormBuilder, private http: HttpClient, private toastr: ToastrService, private login: LoginService) { }
 
   createForm() {
     this.paitentForm = this.formBuilder.group({
@@ -115,7 +124,9 @@ export class PaitentmoduleComponent implements OnInit {
     });
   }
   getAllPaitent() {
-    this.http.get<any>("https://localhost:7087/api/Paitent/GetAll").subscribe((res) => {
+    const employeeId = this.empId;
+    const empType = this.employeeType;
+    this.http.get<any>(`https://localhost:7087/api/Paitent/GetAll/${employeeId}/${empType}`).subscribe((res) => {
       //this.dataSource = res;
       this.dataSource = new MatTableDataSource(res);
     })
@@ -130,7 +141,7 @@ export class PaitentmoduleComponent implements OnInit {
       .subscribe((res) => {
         this.response = res;
        
-         if (this.response > 1) {
+         if (this.response > 0) {
            this.toastr.success("Paitent Visite Created. 😎")
            this.onBackBtnClick();
           }
